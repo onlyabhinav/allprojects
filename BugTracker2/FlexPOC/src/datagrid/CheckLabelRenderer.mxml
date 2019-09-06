@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MXDataGridItemRenderer 
+    focusEnabled="true"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.DataGrid;
+            import mx.controls.dataGridClasses.DataGridListData;
+            import mx.controls.listClasses.BaseListData;
+
+            override public function set data(value:Object):void
+            {
+                super.data = value;
+
+                var myListData:DataGridListData = DataGridListData(listData);
+                //  var criteria:Number = (myListData.owner as Mydatagrid).criteria;
+                //crdsId: "01", legalName: "SBI", address: "Delhi", SSCI: "1234" },
+
+                if (myListData.dataField == "crdsId")
+                    this.currentState = "onlylabel";
+                else
+                    this.currentState = "checknlabel";
+
+
+                lblData.text = data[myListData.dataField].value;
+                ckbSelected.selected = (data[myListData.dataField].checked && data['select'].checked);
+
+                if (myListData.dataField != "select")
+                    ckbSelected.enabled = data['select'].checked;
+
+
+
+            }
+
+            protected function selectionChanged(event:Event):void
+            {
+                var myListData:DataGridListData = DataGridListData(listData);
+
+                var gridData:ArrayCollection = DataGrid(this.owner).dataProvider as ArrayCollection;
+                var targetRow:RowVO = RowVO(gridData.getItemAt(itemIndex));
+
+                trace('Before: ' + targetRow[myListData.dataField].checked);
+
+                MixItemVO(targetRow[myListData.dataField]).checked = (event.currentTarget as CheckBox).selected;
+
+                trace('After: ' + targetRow[myListData.dataField].checked);
+
+                gridData.itemUpdated(targetRow);
+
+
+
+                dispatchEvent(ItemUpdateEvent.dataUpdated(targetRow));
+
+
+            }
+
+            override protected function stateChanged(oldState:String, newState:String,
+                                                     recursive:Boolean):void
+            {
+                super.stateChanged(oldState, newState, recursive);
+
+                trace('State changed...' + oldState + ' to ' + newState);
+            }
+
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+            {
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+
+                var myListData:DataGridListData = DataGridListData(listData);
+
+                if (myListData.dataField == "crdsId")
+                    this.currentState = "onlylabel";
+                else
+                    this.currentState = "checknlabel";
+
+            }
+        ]]>
+    </fx:Script>
+    <s:states>
+        <s:State name="onlycheck"/>
+        <s:State name="checknlabel"/>
+        <s:State name="onlylabel"/>
+    </s:states>
+    <s:HGroup 
+        width="100%" height="100%"
+        horizontalAlign="left"
+        paddingLeft="5"
+        paddingRight="5"
+        verticalAlign="middle"
+        gap="2">
+        <s:CheckBox id="ckbSelected"
+            change="selectionChanged(event)"
+            visible.onlycheck="true"
+            visible.checknlabel="true"
+            visible="false"/>
+        <s:Label id="lblData"
+            text="{dataGridListData.label}"
+            visible.onlylabel="true"
+            visible.checknlabel="true"
+            visible="false"/>
+    </s:HGroup>
+</s:MXDataGridItemRenderer>

@@ -1,0 +1,48 @@
+package org.abhinav.bugtracker.commands
+{
+    import mx.rpc.AsyncToken;
+    import mx.rpc.events.ResultEvent;
+    import mx.rpc.remoting.RemoteObject;
+
+    import org.abhinav.bugtracker.events.BaseEvent;
+
+    public class BaseCommand
+    {
+        protected var event:BaseEvent;
+
+        [Inject]
+        public var ro:RemoteObject;
+
+        public function BaseCommand()
+        {
+        }
+
+        protected function execute(event:BaseEvent):void
+        {
+            this.event = event;
+        }
+
+        [Command(selector = "getIssuesEvent")]
+        public function executeGetIssues(event:BaseEvent):AsyncToken
+        {
+            execute(event);
+            trace('In BaseCommand');
+
+            ro.getIssues();
+
+            ro.addEventListener(ResultEvent.RESULT, serviceResultHandler);
+
+            return new AsyncToken();
+
+        }
+
+
+        public function serviceResultHandler(event:ResultEvent):void
+        {
+            trace('Result Received' + event.messageId);
+            //dispatcher(NewIssueEvent.
+        }
+    }
+}
+
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.boldHeader{
+			font-size:16;
+			font-weight: bold;
+		}
+		.boldHeader{
+			color:#0000FF;
+		}
+	</fx:Style>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+            import mx.events.AdvancedDataGridEvent;
+
+            private var lastOpenedItem:Object;
+
+            [Bindable]
+            private var dpHierarchy:ArrayCollection= new ArrayCollection([
+                                                                         {name:"Barbara Jennings", region: "Arizona", total:70, children:[  
+                                                                             {detail:[{amount:5},{amount:10},{amount:20},{amount:45}]}]},
+                                                                         {name:"Dana Binn", region: "Arizona", total:130,  children:[ 
+                                                                             {detail:[{amount:15},{amount:25},{amount:35},{amount:55}]}]},
+                                                                         {name:"Joe Smith", region: "California", total:229,  children:[ 
+                                                                             {detail:[{amount:26},{amount:32},{amount:73},{amount:123}]}]},
+                                                                         {name:"Alice Treu", region: "California", total:230, children:[ 
+                                                                             {detail:[{amount:159},{amount:235},{amount:135},{amount:155}]}
+                                                                             ]}
+                                                                         ]);                                            
+
+            protected function myADG_itemOpenHandler(event:AdvancedDataGridEvent):void
+            {
+                // TODO Auto-generated method stub
+            /* Alert.show(event.headerPart);
+            event.stopImmediatePropagation();
+            myADG.expandItem(event.item,true); */
+            }
+
+
+            protected function myADG_doubleClickHandler(event:MouseEvent):void
+            {
+
+                if(lastOpenedItem!= null)
+                {
+                    myADG.expandItem(lastOpenedItem,false);
+
+                }
+
+                if(myADG.isItemOpen(myADG.selectedItem))
+                {
+                    myADG.expandItem(myADG.selectedItem,false);
+                }
+                else{
+                    myADG.expandItem(myADG.selectedItem,true);
+                    lastOpenedItem=myADG.selectedItem;
+                }
+            }
+
+        ]]>
+    </fx:Script>
+
+
+    <mx:AdvancedDataGrid id="myADG" doubleClickEnabled="true" doubleClick="myADG_doubleClickHandler(event)" displayDisclosureIcon="false"
+        width="100%" height="100%" alternatingItemColors="[]" treeColumn="{treeCol}" selectionColor="0xFFFFFF" rollOverColor="0xFFFFFF"
+        variableRowHeight="true" itemOpen="myADG_itemOpenHandler(event)">
+        <mx:dataProvider>
+            <mx:HierarchicalData source="{dpHierarchy}"/>
+        </mx:dataProvider>
+        <mx:columns>
+            <mx:AdvancedDataGridColumn dataField="name" headerText="Name"/>
+            <mx:AdvancedDataGridColumn dataField="total" headerText="Total"/>
+            <mx:AdvancedDataGridColumn dataField="region" headerText="Region"/>
+            <mx:AdvancedDataGridColumn dataField="total" headerText="Total"/>
+            <mx:AdvancedDataGridColumn id="treeCol" dataField="region" headerText="Region"/>
+        </mx:columns>   
+
+        <mx:rendererProviders>            
+            <mx:AdvancedDataGridRendererProvider 
+                dataField="detail" 
+                renderer="views.ChartRenderer" 
+                columnIndex="0"
+                columnSpan="0"/>         
+        </mx:rendererProviders>   
+    </mx:AdvancedDataGrid>
+
+</s:Group>

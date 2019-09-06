@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: AbhinavSharma
+Built-By: AbhinavSharma
+Main-Class: EntryPoint
+Class-Path: commons-validator-1.4.0.jar gson-2.2.2.jar neo-1.0.jar ope
+ ncsv-2.3.jar
+

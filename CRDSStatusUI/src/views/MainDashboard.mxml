@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.boldHeader{
+			font-size:16;
+			font-weight: bold;
+		}
+		.boldHeader{
+			color:#0000FF;
+		}
+	</fx:Style>
+	<mx:DataGrid id="srcLists" width="100%" height="100%" rollOverColor="0xFFFFFF" alternatingItemColors="[]" headerStyleName="boldHeader" rowHeight="60" headerHeight="40">
+		<mx:columns>
+			<mx:DataGridColumn headerText="Source System" dataField="source"/>
+			<mx:DataGridColumn headerText="Landing" dataField="landing"/>
+			<mx:DataGridColumn headerText="Staging" dataField="staging"/>
+			<mx:DataGridColumn headerText="Base Object" dataField="baseobject"/>
+			<mx:DataGridColumn headerText="Reports" dataField="reports"/>
+			<mx:DataGridColumn headerText="More" dataField="more" headerStyleName="blueHeader"/>
+		</mx:columns>
+		<mx:dataProvider>
+			<s:ArrayList>
+				<fx:Object source="SUMMIT" landing="Done" staging="In Progress" baseobject="In Queue" reports="In Queue" />
+				<fx:Object source="AVOX" landing="Done" staging="Done" baseobject="In Progress" reports="In Queue" />
+				<fx:Object source="SUMMIT" landing="Done" staging="Failed" baseobject="In Queue" reports="In Queue" />
+				<fx:Object source="S ..1" landing="Done" staging="In Progress" baseobject="In Queue" reports="In Queue" />
+			</s:ArrayList>
+		</mx:dataProvider>
+	</mx:DataGrid>
+</s:Group>

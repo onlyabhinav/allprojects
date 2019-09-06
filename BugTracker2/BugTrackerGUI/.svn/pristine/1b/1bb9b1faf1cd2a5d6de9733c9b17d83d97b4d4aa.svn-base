@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2009/10/23/displaying-a-popup-spark-titlewindow-container-in-flex-4/ -->
+<s:TitleWindow name="MyTitleWindow"
+    width="300" height="200"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/halo"
+    title="Menu"
+    windowMoving="ttlWndw_windowMovingHandler(event)"
+    xmlns:parsley="http://www.spicefactory.org/parsley">
+    <fx:Declarations>
+        <parsley:Configure/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.IList;
+            import mx.core.IFlexDisplayObject;
+            import mx.events.CloseEvent;
+            import mx.managers.PopUpManager;
+
+            import org.abhinav.bugtracker.model.Shell;
+            import org.abhinav.bugtracker.constants.AppConstants;
+
+            import spark.events.TitleWindowBoundsEvent;
+
+            [Inject]
+            [Bindable]
+            public var shell:Shell;
+
+            [Bindable]
+            public var menuItems:IList;
+
+
+
+            protected function ttlWndw_windowMovingHandler(evt:TitleWindowBoundsEvent):void
+            {
+                evt.stopImmediatePropagation();
+                evt.preventDefault();
+            }
+        ]]>
+    </fx:Script>
+    <s:layout>
+        <s:VerticalLayout 
+            horizontalAlign="center"
+            verticalAlign="middle"/>
+    </s:layout>
+    <s:List id="menuList"
+        width="100%" height="100%"
+        dataProvider="@{menuItems}"
+        itemRenderer="org.abhinav.bugtracker.view.renderers.ListItemRenderer">
+        <s:layout>
+            <s:VerticalLayout 
+                horizontalAlign="contentJustify"
+                gap="0"/>
+        </s:layout>
+        <!--        <s:dataProvider>
+                    <s:ArrayList source="[One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten]"/>
+                </s:dataProvider>-->
+    </s:List>
+</s:TitleWindow>

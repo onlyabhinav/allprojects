@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300">
+    <fx:Script>
+        <![CDATA[
+            import com.neorbs.skillmeter.values.AppVars;
+            import com.neorbs.skillmeter.values.Skill;
+            import com.neorbs.skillmeter.values.Strings;
+
+            import mx.controls.Alert;
+
+            protected function addSkills(event:MouseEvent):void
+            {
+
+                var skill:Skill = new Skill();
+
+                skill.name = skillName.text;
+                skill.primaryCategory = skillCategory.selectedItem;
+                skill.experience = skillExp.selectedItem;
+                skill.expUnit = expUnit.selectedItem;
+                skill.level = Number (skillLevel.selectedItem);
+
+                if(!skill.validate())
+                {
+                    Alert.show("Min items required!!");
+                    return;					
+                }
+
+                AppVars.skills.addItem(skill);
+
+                AppVars.appStatus = "Skill Added...";
+
+            }
+
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <s:Form id="skillDetails">
+        <s:FormHeading label="{Strings.FORM_SKILL_DETAILS_HEADING}"/>
+        <s:FormItem label="Skill Name">
+            <s:TextInput id="skillName"/>
+        </s:FormItem>
+        <s:FormItem label="Skill Category">
+            <s:ComboBox id="skillCategory"/>
+        </s:FormItem>
+        <s:FormItem label="Experience">
+            <s:ComboBox id="skillExp"/>
+            <s:DropDownList id="expUnit">
+                <s:ArrayCollection>
+                    <fx:Array>
+                        <fx:String>Years</fx:String>
+                        <fx:String>Months</fx:String>
+                    </fx:Array>
+                </s:ArrayCollection>
+            </s:DropDownList>
+        </s:FormItem>
+        <s:FormItem label="Skill Level (1-10)">
+            <s:ComboBox id="skillLevel" restrict="0-9"/>
+        </s:FormItem>
+        <s:FormItem label="Certified">
+            <s:ButtonBar id="isCertified" >
+                <s:ArrayCollection>
+                    <fx:Array>
+                        <fx:String>Yes</fx:String>
+                        <fx:String>No</fx:String>
+                    </fx:Array>
+                </s:ArrayCollection>
+            </s:ButtonBar>
+        </s:FormItem>
+        <s:Button id="btnAddSkill" label="Add" click="addSkills(event)"/>
+    </s:Form>
+</s:Group>

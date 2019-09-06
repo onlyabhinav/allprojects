@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formdata>
+    <newissue>
+        <components>
+            <option 
+                value="11646"
+                title="Actionscript cycling  ">Actionscript cycling </option>
+            <option 
+                value="10011"
+                title="ActionScript editor ">ActionScript editor</option>
+            <option 
+                value="10013"
+                title="AIR: Export to AIR ">AIR: Export to AIR</option>
+            <option 
+                value="10014"
+                title="AIR: Project ">AIR: Project</option>
+            <option 
+                value="10015"
+                title="AIR: Run/ Debug ">AIR: Run/ Debug</option>
+            <option 
+                value="10012"
+                title="AJAX Wrappers ">AJAX Wrappers</option>
+            <option 
+                value="11070"
+                title="Appearance  Panel ">Appearance  Panel</option>
+            <option 
+                value="10016"
+                title="AS Debugger ">AS Debugger</option>
+            <option 
+                value="10835"
+                title="AS File Templates ">AS File Templates</option>
+            <option 
+                value="11647"
+                title="AS Project - AIR ">AS Project - AIR</option>
+            <option 
+                value="11648"
+                title="AS Skinnable Component  ">AS Skinnable Component </option>
+            <option 
+                value="10836"
+                title="ASDoc - Display ">ASDoc - Display</option>
+            <option 
+                value="11445"
+                title="Athena Launcher ">Athena Launcher</option>
+            <option 
+                value="11650"
+                title="Auto Indent Code  ">Auto Indent Code </option>
+            <option 
+                value="11360"
+                title="Build Engineering Team (do not use) ">Build Engineering Team (do not use)</option>
+            <option 
+                value="10278"
+                title="CF Extensions  - ColdFusion Extensions for Flex Builder">CF Extensions</option>
+            <option 
+                value="10017"
+                title="Class Wizard ">Class Wizard</option>
+            <option 
+                value="11651"
+                title="Cocoa support  ">Cocoa support </option>
+            <option 
+                value="10019"
+                title="Code Coloring ">Code Coloring</option>
+            <option 
+                value="10020"
+                title="Code Hints: AS ">Code Hints: AS</option>
+            <option 
+                value="10021"
+                title="Code Hints: CSS ">Code Hints: CSS</option>
+            <option 
+                value="10022"
+                title="Code Hints: MXML ">Code Hints: MXML</option>
+            <option 
+                value="10023"
+                title="Code Model ">Code Model</option>
+            <option 
+                value="10024"
+                title="Code Model - SWC Reader ">Code Model - SWC Reader</option>
+            <option 
+                value="10660"
+                title="Code Templates ">Code Templates</option>
+            <option 
+                value="10025"
+                title="Compiler ">Compiler</option>
+            <option 
+                value="10026"
+                title="Components Panel ">Components Panel</option>
+            <option 
+                value="10027"
+                title="Constraint Based Layout ">Constraint Based Layout</option>
+            <option 
+                value="11283"
+                title="Create/Edit Item Renderers ">Create/Edit Item Renderers</option>
+            <option 
+                value="10440"
+                title="CS Skinning extensions ">CS Skinning extensions</option>
+            <option 
+                value="10028"
+                title="CSS Editor ">CSS Editor</option>
+            <option 
+                value="11653"
+                title="CSS support improvement  ">CSS support improvement </option>
+            <option 
+                value="10029"
+                title="CSS: Runtime ">CSS: Runtime</option>
+            <option 
+                value="10030"
+                title="Custom Component Rendering ">Custom Component Rendering</option>
+            <option 
+                value="10031"
+                title="Data Wizards ">Data Wizards</option>
+            <option 
+                value="10837"
+                title="DCD : AS Code Generation ">DCD : AS Code Generation</option>
+            <option 
+                value="11380"
+                title="DCD : Bolt-Gumbo Integration  - Issues related to Bolt-Gumbo licensing">DCD : Bolt-Gumbo Integration</option>
+            <option 
+                value="10933"
+                title="DCD : Charts Generation ">DCD : Charts Generation</option>
+            <option 
+                value="11654"
+                title="DCD : Code Generation  ">DCD : Code Generation </option>
+            <option 
+                value="10857"
+                title="DCD : Data Hinting ">DCD : Data Hinting</option>
+            <option 
+                value="10838"
+                title="DCD : Data Introspection ">DCD : Data Introspection</option>
+            <option 
+                value="10856"
+                title="DCD : Data Management ">DCD : Data Management</option>
+            <option 
+                value="11081"
+                title="DCD : Data Model ">DCD : Data Model</option>
+            <option 
+                value="11082"
+                title="DCD : DataGrid Column Config ">DCD : DataGrid Column Config</option>
+            <option 
+                value="10926"
+                title="DCD : Extensibility ">DCD : Extensibility</option>
+            <option 
+                value="10981"
+                title="DCD : Fiber Integration ">DCD : Fiber Integration</option>
+            <option 
+                value="10940"
+                title="DCD : Form Generation ">DCD : Form Generation</option>
+            <option 
+                value="10839"
+                title="DCD : Introspection - PHP ">DCD : Introspection - PHP</option>
+            <option 
+                value="10971"
+                title="DCD : Introspector  LCDS/Blaze DS ">DCD : Introspector  LCDS/Blaze DS</option>
+            <option 
+                value="10970"
+                title="DCD : Introspector CF ">DCD : Introspector CF</option>
+            <option 
+                value="10934"
+                title="DCD : LCDS BlazeDS ">DCD : LCDS BlazeDS</option>
+            <option 
+                value="10840"
+                title="DCD : Packaging ">DCD : Packaging</option>
+            <option 
+                value="10855"
+                title="DCD : Paging ">DCD : Paging</option>
+            <option 
+                value="10935"
+                title="DCD : Remoting Authentication ">DCD : Remoting Authentication</option>
+            <option 
+                value="10925"
+                title="DCD : SDK 3 Support ">DCD : SDK 3 Support</option>
+            <option 
+                value="10841"
+                title="DCD : Service Explorer ">DCD : Service Explorer</option>
+            <option 
+                value="10842"
+                title="DCD : Service Wizard ">DCD : Service Wizard</option>
+            <option 
+                value="10843"
+                title="DCD : UI Authoring ">DCD : UI Authoring</option>
+            <option 
+                value="11161"
+                title="DCD: Auto Refresh ">DCD: Auto Refresh</option>
+            <option 
+                value="11165"
+                title="DCD: CF Sample Generation ">DCD: CF Sample Generation</option>
+            <option 
+                value="11162"
+                title="DCD: Configure Input Types ">DCD: Configure Input Types</option>
+            <option 
+                value="10844"
+                title="DCD: Configure Return Type ">DCD: Configure Return Type</option>
+            <option 
+                value="11191"
+                title="DCD: Import/Export ">DCD: Import/Export</option>
+            <option 
+                value="11249"
+                title="DCD: MX only Workflow ">DCD: MX only Workflow</option>
+            <option 
+                value="11164"
+                title="DCD: PHP Sample Generation ">DCD: PHP Sample Generation</option>
+            <option 
+                value="11163"
+                title="DCD: Test Operation UI ">DCD: Test Operation UI</option>
+            <option 
+                value="10032"
+                title="Default Property ">Default Property</option>
+            <option 
+                value="10033"
+                title="Design Model ">Design Model</option>
+            <option 
+                value="10034"
+                title="Design View - Blue Box ">Design View - Blue Box</option>
+            <option 
+                value="10035"
+                title="Design View - General ">Design View - General</option>
+            <option 
+                value="10036"
+                title="Design View Performance ">Design View Performance</option>
+            <option 
+                value="10010"
+                title="Design View: Absolute Layout ">Design View: Absolute Layout</option>
+            <option 
+                value="10037"
+                title="DV Item Renderers ">DV Item Renderers</option>
+            <option 
+                value="10038"
+                title="DV Size ">DV Size</option>
+            <option 
+                value="11656"
+                title="Eclipse Integration ">Eclipse Integration</option>
+            <option 
+                value="10853"
+                title="Event Handler Assistance ">Event Handler Assistance</option>
+            <option 
+                value="10378"
+                title="Export Release Version ">Export Release Version</option>
+            <option 
+                value="11657"
+                title="FC Interoperability ">FC Interoperability</option>
+            <option 
+                value="10039"
+                title="FDB ">FDB</option>
+            <option 
+                value="10040"
+                title="Find All References ">Find All References</option>
+            <option 
+                value="10041"
+                title="Find Definitions ">Find Definitions</option>
+            <option 
+                value="11843"
+                title="Flash Player Runtime  - This components should be used to log Flash Runtime bugs and component owner should replicate the same bug into watson, just to help community members who are not sure about the right bugbase and logging them here. ">Flash Player Runtime</option>
+            <option 
+                value="10700"
+                title="Flash Professional Integration ">Flash Professional Integration</option>
+            <option 
+                value="10377"
+                title="Flex Project Natures ">Flex Project Natures</option>
+            <option 
+                value="10852"
+                title="Flex Unit ">Flex Unit</option>
+            <option 
+                value="11731"
+                title="Flex/PHP by Zend Data Wizards ">Flex/PHP by Zend Data Wizards</option>
+            <option 
+                value="11730"
+                title="Flex/PHP Debugging ">Flex/PHP Debugging</option>
+            <option 
+                value="11729"
+                title="Flex/PHP Mobile Project ">Flex/PHP Mobile Project</option>
+            <option 
+                value="11728"
+                title="Flex/PHP Project ">Flex/PHP Project</option>
+            <option 
+                value="10047"
+                title="General Eclipse Mac UI ">General Eclipse Mac UI</option>
+            <option 
+                value="10042"
+                title="General Eclipse UI ">General Eclipse UI</option>
+            <option 
+                value="11090"
+                title="General FB Branding ">General FB Branding</option>
+            <option 
+                value="11658"
+                title="Generate from Usage ">Generate from Usage</option>
+            <option 
+                value="10043"
+                title="Help ">Help</option>
+            <option 
+                value="10044"
+                title="HTML Wrapper ">HTML Wrapper</option>
+            <option 
+                value="10240"
+                title="Import Artwork ">Import Artwork</option>
+            <option 
+                value="10045"
+                title="Installer  - Making Mugdha as component lead for installers. ">Installer</option>
+            <option 
+                value="11727"
+                title="Installer - Flash Builder for PHP ">Installer - Flash Builder for PHP</option>
+            <option 
+                value="10046"
+                title="Internationalization ">Internationalization</option>
+            <option 
+                value="10230"
+                title="Legacy/Deprecated ">Legacy/Deprecated</option>
+            <option 
+                value="10057"
+                title="Licensing / Serialization  - Changing the component lead to Mugdha Choudhary.">Licensing / Serialization</option>
+            <option 
+                value="11709"
+                title="Live Error Highlighting ">Live Error Highlighting</option>
+            <option 
+                value="11659"
+                title="Metadata code completion  ">Metadata code completion </option>
+            <option 
+                value="11669"
+                title="Mobile: Design View ">Mobile: Design View</option>
+            <option 
+                value="11670"
+                title="Mobile: Device Configurations ">Mobile: Device Configurations</option>
+            <option 
+                value="11671"
+                title="Mobile: Export Release ">Mobile: Export Release</option>
+            <option 
+                value="11672"
+                title="Mobile: Launch / Debug / Package - Device ">Mobile: Launch / Debug / Package - Device</option>
+            <option 
+                value="11673"
+                title="Mobile: Launch / Debug / Profile - Desktop ">Mobile: Launch / Debug / Profile - Desktop</option>
+            <option 
+                value="11777"
+                title="Mobile: Launch/Debug/Package - RIM ">Mobile: Launch/Debug/Package - RIM</option>
+            <option 
+                value="11906"
+                title="Mobile: Native Extensions ">Mobile: Native Extensions</option>
+            <option 
+                value="11674"
+                title="Mobile: Project ">Mobile: Project</option>
+            <option 
+                value="11675"
+                title="Mobile: Workflows ">Mobile: Workflows</option>
+            <option 
+                value="10261"
+                title="Module Support ">Module Support</option>
+            <option 
+                value="10048"
+                title="Multiple SDK support ">Multiple SDK support</option>
+            <option 
+                value="10049"
+                title="MXML Editor ">MXML Editor</option>
+            <option 
+                value="10854"
+                title="MXML File Templates ">MXML File Templates</option>
+            <option 
+                value="10050"
+                title="Nested Containers ">Nested Containers</option>
+            <option 
+                value="10850"
+                title="Network Monitor ">Network Monitor</option>
+            <option 
+                value="10051"
+                title="Outline View ">Outline View</option>
+            <option 
+                value="11660"
+                title="Override/Implements method ">Override/Implements method</option>
+            <option 
+                value="10052"
+                title="Perspectives ">Perspectives</option>
+            <option 
+                value="10375"
+                title="Plug in compatibility ">Plug in compatibility</option>
+            <option 
+                value="10671"
+                title="Profiler ">Profiler</option>
+            <option 
+                value="11661"
+                title="Profiler: Tree view object reference ">Profiler: Tree view object reference</option>
+            <option 
+                value="10053"
+                title="Project Definition ">Project Definition</option>
+            <option 
+                value="10666"
+                title="Project Explorer ">Project Explorer</option>
+            <option 
+                value="11677"
+                title="Project Wizards ">Project Wizards</option>
+            <option 
+                value="10380"
+                title="Project: Import/Export ">Project: Import/Export</option>
+            <option 
+                value="10064"
+                title="Project: Library Projects ">Project: Library Projects</option>
+            <option 
+                value="10054"
+                title="Project: Panel ">Project: Panel</option>
+            <option 
+                value="10058"
+                title="Project: Server Project Wizard ">Project: Server Project Wizard</option>
+            <option 
+                value="10055"
+                title="Property Inspector ">Property Inspector</option>
+            <option 
+                value="11662"
+                title="Quick Assist ">Quick Assist</option>
+            <option 
+                value="10056"
+                title="Refactoring ">Refactoring</option>
+            <option 
+                value="11663"
+                title="Resource module support ">Resource module support</option>
+            <option 
+                value="11664"
+                title="RSL Enhancements ">RSL Enhancements</option>
+            <option 
+                value="11447"
+                title="SC : General ">SC : General</option>
+            <option 
+                value="11312"
+                title="SC : Library Creation ">SC : Library Creation</option>
+            <option 
+                value="11431"
+                title="SC : Panel ">SC : Panel</option>
+            <option 
+                value="11432"
+                title="SC : Service Creation ">SC : Service Creation</option>
+            <option 
+                value="11446"
+                title="SC : Success Events ">SC : Success Events</option>
+            <option 
+                value="11433"
+                title="SC : Tracker Creation ">SC : Tracker Creation</option>
+            <option 
+                value="11665"
+                title="Single Installer  - Making Mugdha the component lead">Single Installer</option>
+            <option 
+                value="11313"
+                title="SiteCatalyst ">SiteCatalyst</option>
+            <option 
+                value="10059"
+                title="Skin Rendering ">Skin Rendering</option>
+            <option 
+                value="11182"
+                title="Skinning Support ">Skinning Support</option>
+            <option 
+                value="10060"
+                title="Snapping/Alignment  ">Snapping/Alignment </option>
+            <option 
+                value="11655"
+                title="Spark Datagrid ">Spark Datagrid</option>
+            <option 
+                value="11666"
+                title="Spark Form ">Spark Form</option>
+            <option 
+                value="11667"
+                title="Spark Image ">Spark Image</option>
+            <option 
+                value="11668"
+                title="Spark Only Project ">Spark Only Project</option>
+            <option 
+                value="10061"
+                title="Standalone  - Making Mugdha the component lead">Standalone</option>
+            <option 
+                value="10069"
+                title="Start Page ">Start Page</option>
+            <option 
+                value="10062"
+                title="States ">States</option>
+            <option 
+                value="10063"
+                title="Style Rendering ">Style Rendering</option>
+            <option 
+                value="10851"
+                title="Themes ">Themes</option>
+            <option 
+                value="10379"
+                title="Third Party Component Support ">Third Party Component Support</option>
+            <option 
+                value="10065"
+                title="Unit Test Framework ">Unit Test Framework</option>
+            <option 
+                value="11714"
+                title="Updater Installer  - Making Mugdha the component lead">Updater Installer</option>
+            <option 
+                value="10067"
+                title="View Source ">View Source</option>
+            <option 
+                value="10068"
+                title="Web Services Introspection ">Web Services Introspection</option>
+            <option 
+                value="11857"
+                title="z-Misc./General - FlashBuilder ">z-Misc./General - FlashBuilder</option>
+            <option 
+                value="10070"
+                title="Zoom/Pan ">Zoom/Pan</option>
+        </components>
+        <severities>
+            <option value="Crash/Hang">Crash/Hang</option>
+            <option value="Security">Security</option>
+            <option value="Data Loss/Corruption">Data Loss/Corruption</option>
+            <option value="Non Functioning">Non Functioning</option>
+            <option value="Performance">Performance</option>
+            <option value="Incorrectly Functioning">Incorrectly Functioning</option>
+            <option value="Incorrectly Functioning with Workaround">Incorrectly Functioning with Workaround</option>
+            <option value="Runtime Error">Runtime Error</option>
+            <option value="Memory Leak">Memory Leak</option>
+            <option value="Usability Issue">Usability Issue</option>
+            <option value="Cosmetic Issue/Spelling Error">Cosmetic Issue/Spelling Error</option>
+            <option value="Conflicts with Docs">Conflicts with Docs</option>
+            <option value="Enhancement/Task">Enhancement/Task</option>
+        </severities>
+        <reproducibility>
+            <option value="Every Time">Every Time</option>
+            <option value="Intermittent">Intermittent</option>
+            <option value="Once">Once</option>
+        </reproducibility>
+        <discoverability>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+            <option value="Very Low">Very Low</option>
+        </discoverability>
+        <versions>
+            <option>Flash Builder 4.6</option>
+            <option>Flash Builder 4.5.1</option>
+            <option>Flash Builder 4.5 (Release)</option>
+            <option>Flash Builder 4.0.1 (Release)</option>
+            <option>Flash Builder 4.0 (Release)</option>
+            <option>Flex Builder 3.0 (Release)</option>
+            <option>Flex Builder 2.0 (Release)</option>
+            <option>Flash Builder 2013</option>
+            <option>FBNext - RC</option>
+            <option>FBNext - I4</option>
+            <option>FBNext - I3</option>
+            <option>FBNext - I2</option>
+            <option>FBNext - I1</option>
+        </versions>
+        <os>
+            <option>Windows</option>
+            <option>Mac</option>
+            <option>All OS Platforms</option>
+        </os>
+        <eclipse>
+            <option value="FB Standalone">FB Standalone</option>
+            <option value="Eclipse 3.2">Eclipse 3.2</option>
+            <option value="Eclipse 3.3">Eclipse 3.3</option>
+            <option value="Eclipse 3.4">Eclipse 3.4</option>
+            <option value="Eclipse 3.5">Eclipse 3.5</option>
+            <option value="BEA Workshop (specify version)">BEA Workshop (specify version)</option>
+            <option value="IBM RSA/RAD (specify version)">IBM RSA/RAD (specify version)</option>
+            <option value="Other (specify version)">Other (specify version)</option>
+            <option value="Eclipse 3.6">Eclipse 3.6</option>
+        </eclipse>
+        <jdk>
+            <option value="Sun 1.4.x">Sun 1.4.x</option>
+            <option value="Sun 1.5.x">Sun 1.5.x</option>
+            <option value="Sun 1.6.x">Sun 1.6.x</option>
+            <option value="IBM 1.4">IBM 1.4</option>
+            <option value="IBM 1.5">IBM 1.5</option>
+            <option value="BEA JRockit 1.5">BEA JRockit 1.5</option>
+            <option value="Other (specify version)">Other (specify version)</option>
+        </jdk>
+    </newissue>
+</formdata>

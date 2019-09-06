@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" >
+    <fx:Script>
+        <![CDATA[
+            import com.neorbs.skillmeter.values.AppVars;
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <mx:ColumnChart id="skillsBar" dataProvider="{AppVars.skills}" width="100%">
+        <mx:horizontalAxis>
+            <mx:CategoryAxis categoryField="name"/>
+        </mx:horizontalAxis>
+        <mx:series>
+            <mx:ColumnSeries xField="name" yField="level"/>
+        </mx:series>
+    </mx:ColumnChart>
+</s:Group>

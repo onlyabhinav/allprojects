@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    pageTitle="Animated Scrolling List"
+    viewSourceURL="srcview/index.html">
+    <!-- Blog Entry: http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/mx/effects/AnimateProperty.html -->
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayList;
+            import mx.effects.AnimateProperty;
+            import mx.events.FlexEvent;
+
+            import spark.components.DataGroup;
+
+            [Bindable]
+            public var listData:ArrayList = new ArrayList([ { label: "First item" }, { label: "Second item" }, { label: "Third item" }, { label: "Fourth item" }, { label: "Fifth item" } ]);
+
+            [Bindable]
+            public var selectedItem:Object;
+
+            private var newItemCount:int = 1;
+
+            /** Adds a new item to the list and selects it. If the new item is not visible it is scrolled to make it visible. */
+            public function addItem(event:MouseEvent):void
+            {
+                var item:Object = { label: "New Item " + newItemCount++ };
+                listData.addItem(item);
+                indexInput.maximum = listData.length - 1;
+                selectedItem = item;
+                // Scroll to the selected index once the selection is committed
+                list.addEventListener(FlexEvent.UPDATE_COMPLETE, scrollToSelectedIndexHandler);
+            }
+
+            private function scrollToSelectedIndexHandler(event:FlexEvent):void
+            {
+                list.removeEventListener(FlexEvent.UPDATE_COMPLETE, scrollToSelectedIndex);
+                scrollToSelectedIndex();
+            }
+
+            private function scrollToSelectedIndex():void
+            {
+                scrollToIndex(list.selectedIndex);
+            }
+
+            public function scrollToIndexClicked(event:MouseEvent):void
+            {
+                scrollToIndex(indexInput.value);
+
+            }
+
+            /**
+             * Animates the vertical scrolling of the list to the given index.
+             * @param index the index in the list to scroll to
+             * @param animationDuration the number of milliseconds for the scrolling animation
+             * If animationDuration is 0 then the scrolling happens instantly and no animation is done.
+             */
+            private function scrollToIndex(index:int, animationDuration:int = 500):void
+            {
+            /* if ((index != -1) && (list.layout != null))
+            {
+                if (animationDuration <= 0)
+                {
+                    list.ensureIndexIsVisible(index);
+                }
+                else
+                {
+                    // this is the same code as in the above ensureIndexIsVisible
+                    var spDelta:Point = list.dataGroup.layout.getScrollPositionDeltaToElement(index);
+                    if ((spDelta != null) && (spDelta.y != 0))
+                    {
+                        var target:DataGroup = list.dataGroup;
+                        // Animate the verticalScrollPosition value
+                        // The same could be done for the horizontalScrollPosition and combined in Parallel
+                        var animation:AnimateProperty = new AnimateProperty(target);
+                        animation.property = "verticalScrollPosition";
+                        animation.duration = animationDuration;
+                        animation.toValue = target.verticalScrollPosition + spDelta.y;
+                        animation.play();
+
+                    }
+                }
+            } */
+            }
+        ]]>
+    </fx:Script>
+    <s:HGroup 
+        x="10" y="10"
+        verticalAlign="middle">
+        <s:Button 
+            label="Add Item"
+            click="addItem(event)"/>
+        <s:Line height="20">
+            <s:stroke>
+                <s:SolidColorStroke 
+                    color="#D6D6D6"
+                    weight="1"/>
+            </s:stroke>
+        </s:Line>
+        <s:NumericStepper id="indexInput"
+            maximum="4" minimum="0" value="0"/>
+        <s:Button 
+            label="Scroll To Index"
+            click="scrollToIndexClicked(event)"/>
+    </s:HGroup>
+    <s:DataGrid id="list"
+        x="10" y="50" width="300" height="100"
+        dataProvider="{listData}"
+        selectedItem="{selectedItem}">
+    </s:DataGrid>
+</s:Application>

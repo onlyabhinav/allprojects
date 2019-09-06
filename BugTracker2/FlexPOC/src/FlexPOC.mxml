@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:parsley="http://www.spicefactory.org/parsley">
+
+    <fx:Script>
+        <![CDATA[
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+
+            protected function getService(event:MouseEvent):void
+            {
+
+                var e:AppEvent = new AppEvent(AppEvent.SERVICE_REQUEST);
+                //   e.type = AppEvent.SERVICE_REQUEST;
+
+                dispatcher(e);
+
+                trace('Event Dispatched');
+
+
+            }
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        <parsley:Configure/>
+        <parsley:ContextBuilder config="{Config}"/>
+    </fx:Declarations>
+
+    <s:Button label="Service" click="getService(event)"/>
+</s:Application>

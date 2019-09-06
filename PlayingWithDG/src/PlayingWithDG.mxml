@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    width="542" height="324"
+    horizontalCenter="0"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    viewSourceURL="http://www.codesofmylife.com/apps/DGHeaderPlay/srcview/index.html">
+    <fx:Style source="PlayingWithDG.css"/>
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.collections.ArrayList;
+            import mx.controls.Alert;
+            import mx.events.ColorPickerEvent;
+            import mx.rpc.events.HeaderEvent;
+            import mx.utils.OrderedObject;
+
+            import renderer.CustomDGHeaderRenderer;
+
+            import spark.components.GridColumnHeaderGroup;
+            import spark.components.gridClasses.GridColumn;
+            import spark.events.GridEvent;
+            import spark.events.IndexChangeEvent;
+            import spark.formatters.NumberFormatter;
+            import spark.skins.spark.DefaultGridHeaderRenderer;
+            import spark.skins.spark.DefaultGridItemRenderer;
+
+            private var defaultRenderer:ClassFactory = new ClassFactory(DefaultGridItemRenderer);
+
+            //Most of the codes in CustomDGHeaderRenderer are copied from DefaultGridHeaderRenderer			
+            private var customHeaderRenderer:ClassFactory = new ClassFactory(CustomDGHeaderRenderer);
+
+            [Bindable]
+            private var color:uint = 0xFFFFFF;
+
+            private var maxHeaderLines:int = 2;
+
+            [Bindable]
+            private var alignment:ArrayList = new ArrayList(new Array("center", "end",
+                                                                      "left", "justify",
+                                                                      "right", "start"));
+
+            [Bindable]
+            public var dataCollection:ArrayCollection = new ArrayCollection();
+
+            /**
+             * Generate the data and provide item renderer
+             *
+             * */
+            private function onGenerateClick():void
+            {
+                //Spark NumberFormatter is different from its mx counter part. No rounding field
+                var numFormat:NumberFormatter = new NumberFormatter();
+                numFormat.fractionalDigits = 3;
+
+                dataCollection = new ArrayCollection();
+
+                var numOfRows:int = 100;
+                var numOfColumns:int = 4;
+                var columnWidth:Number = 2;
+
+                for (var row:int = 0; row < numOfRows; row++)
+                {
+                    var object:Object = new Object();
+                    object["ID"] = "Row " + (row + 1).toString();
+                    for (var col:int = 0; col < numOfColumns; col++)
+                    {
+                        object["Col " + (col + 1).toString() + ' - Something'] = "V" + row.toString() + col.toString();
+                    }
+                    dataCollection.addItem(object);
+                }
+
+                changePropHRenderer();
+
+                var columnLst:ArrayList = new ArrayList();
+                var idColumn:GridColumn = new GridColumn();
+                idColumn.dataField = "ID";
+                idColumn.headerText = "ID";
+                idColumn.headerRenderer = customHeaderRenderer;
+                columnLst.addItem(idColumn);
+
+                for (var col:int = 0; col < numOfColumns; col++)
+                {
+                    var gridColumn:GridColumn = new GridColumn();
+                    gridColumn.dataField = "Col " + (col + 1).toString() + ' - Something';
+                    gridColumn.headerText = "Col " + (col + 1).toString() + ' - Something';
+                    //   gridColumn.itemRendererFunction = dgItemRndrer;
+                    //   gridColumn.headerRenderer = customHeaderRenderer;
+                    columnLst.addItem(gridColumn);
+                }
+                sparkDG.columns = columnLst;
+                sparkDG.columnHeaderGroup.addEventListener(GridEvent.GRID_CLICK,
+                                                           headerClickListener);
+                // sparkDG.sortableColumns = false;
+            }
+
+            private function transposeDG():void
+            {
+                if (dataCollection.length < 1)
+                    return;
+                var transposeArr:Array = new Array();
+                var transposeHeaders:Array = new Array();
+                transposeHeaders.push((sparkDG.columns.getItemAt(0) as GridColumn).headerText);
+
+                //Initializes each row of transposed datagrid dataprovider
+                for (var i:int = 1; i < sparkDG.columns.length; i++)
+                {
+                    var obj:OrderedObject = new OrderedObject();
+                    obj[(sparkDG.columns.getItemAt(0) as GridColumn).headerText] = (sparkDG.columns.getItemAt(i) as GridColumn).headerText;
+                    transposeArr.push(obj);
+                }
+
+                //Create the dataprovider for transposed datagrid
+                for (i = 0; i < dataCollection.length; i++)
+                {
+                    var rowObj:Object = dataCollection.getItemAt(i);
+                    transposeHeaders.push(rowObj[(sparkDG.columns.getItemAt(0) as GridColumn).headerText]);
+                    for (var j:int = 1; j < sparkDG.columns.length; j++)
+                    {
+                        var obj:OrderedObject = transposeArr[j - 1];
+                        var key:String = (sparkDG.columns.getItemAt(j) as GridColumn).headerText;
+                        var transposeKey:String = rowObj[(sparkDG.columns.getItemAt(0) as GridColumn).headerText]
+                        obj[transposeKey] = rowObj[key];
+                        transposeArr[j - 1] = obj;
+                    }
+                }
+                var transposeDataCol:ArrayCollection = new ArrayCollection(transposeArr);
+                dataCollection = transposeDataCol;
+
+                //Add headertext and rendering
+                var columnLst:ArrayList = new ArrayList();
+                for (i = 0; i < transposeHeaders.length; i++)
+                {
+                    var gridColumn:GridColumn = new GridColumn();
+                    gridColumn.dataField = transposeHeaders[i];
+                    gridColumn.headerText = transposeHeaders[i];
+                    gridColumn.itemRendererFunction = dgItemRndrer;
+                    // gridColumn.headerRenderer = customHeaderRenderer;
+                    columnLst.addItem(gridColumn);
+                }
+                sparkDG.columns = columnLst;
+                sparkDG.columnHeaderGroup.addEventListener(GridEvent.GRID_CLICK,
+                                                           headerClickListener);
+                sparkDG.sortableColumns = false;
+            }
+
+            private function headerClickListener(event:GridEvent):void
+            {
+                var target:Object = event.target;
+                var column:GridColumn = event.column;
+                Alert.show(column.headerText);
+            }
+
+            private function dgItemRndrer(item:Object, column:GridColumn):ClassFactory
+            {
+
+                return defaultRenderer;
+            }
+
+            protected function onCheckChanged(event:Event):void
+            {
+                if (showHideHeader.selected)
+                    sparkDG.columnHeaderGroup.height = 0;
+                else
+                {
+                    sparkDG.columnHeaderGroup.minHeight = 21;
+                    sparkDG.columnHeaderGroup.height = 40;
+                }
+            }
+
+            protected function headerColorPicker_changeHandler(event:ColorPickerEvent):void
+            {
+                color = event.currentTarget.selectedColor;
+                changePropHRenderer();
+                updateHeaderRenderer();
+            }
+
+            //Set the properties of header renderer 
+            protected function changePropHRenderer():void
+            {
+                customHeaderRenderer.properties = { headerTextAlign: headerAlignCBox.selectedItem.toString(), maxDisplayedLines: 2, headerColor: color };
+            }
+
+            protected function headerAlignCBox_changeHandler(event:IndexChangeEvent):void
+            {
+                changePropHRenderer();
+                updateHeaderRenderer();
+            }
+
+            //Updates the header renderer whenever the color or alignment values are changed
+            protected function updateHeaderRenderer():void
+            {
+                var columnLst:ArrayList = new ArrayList();
+                for (var i:int = 0; i < sparkDG.columns.length; i++)
+                {
+                    var gColumn:GridColumn = sparkDG.columns.getItemAt(i) as GridColumn;
+                    gColumn.headerRenderer = customHeaderRenderer;
+                    columnLst.addItem(gColumn);
+                }
+                sparkDG.columns = null;
+                sparkDG.columns = columnLst;
+            }
+        ]]>
+    </fx:Script>
+    <s:Group width="510">
+        <s:layout>
+            <s:VerticalLayout 
+                paddingLeft="10"
+                paddingTop="10"/>
+        </s:layout>
+        <s:Button id="generateBtn"
+            label="Generate Table"
+            useHandCursor="true"
+            buttonMode="true"
+            mouseChildren="false"
+            click="onGenerateClick()"/>
+        <s:Group>
+            <s:layout>
+                <s:HorizontalLayout 
+                    verticalAlign="middle"
+                    gap="8"/>
+            </s:layout>
+            <s:Label text="Header Text Align:"/>
+            <s:ComboBox id="headerAlignCBox"
+                width="72"
+                dataProvider="{alignment}" selectedIndex="0"
+                change="headerAlignCBox_changeHandler(event)"/>
+            <s:Label text="Header Color"/>
+            <mx:ColorPicker id="headerColorPicker"
+                change="headerColorPicker_changeHandler(event)"
+                selectedColor="0xFFFFFF"/>
+            <s:Spacer width="7"/>
+            <s:CheckBox id="showHideHeader"
+                width="86" height="100%"
+                label="Hide header"
+                change="onCheckChanged(event)"/>
+            <s:Button id="transposeBtn"
+                label="Transpose"
+                click="transposeDG()"/>
+        </s:Group>
+        <s:DataGrid id="sparkDG"
+            width="465" height="180"
+            dataProvider="{dataCollection}"
+            cacheAsBitmap="true">
+        </s:DataGrid>
+    </s:Group>
+</s:Application>

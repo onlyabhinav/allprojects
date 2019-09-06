@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ListDetails label="SWC Loading Details" projectName="BugTrackerGUI">
+
+
+<LoadedSetList label="LoadedSet List">
+
+
+<LoadingSet label="LoadingSet1:">
+
+
+<item  label="spicelib-util-3.1.0.swc809294561" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-util-3.1.0.swc809294561\library.swf"/>
+
+
+<item  label="spicelib-reflect-3.0.0.swc323915089" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-reflect-3.0.0.swc323915089\library.swf"/>
+
+
+<item  label="spicelib-xml-mapper-3.0.2.swc1384466577" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-xml-mapper-3.0.2.swc1384466577\library.swf"/>
+
+
+<item  label="spicelib-commands-3.1.1.swc758126361" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-commands-3.1.1.swc758126361\library.swf"/>
+
+
+<item  label="parsley-core-3.0.0.swc-1589193975" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\parsley-core-3.0.0.swc-1589193975\library.swf"/>
+
+
+<item  label="parsley-flex-3.0.0.swc-1184362023" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\parsley-flex-3.0.0.swc-1184362023\library.swf"/>
+
+
+<item  label="parsley-xml-3.0.0.swc-1719772199" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\parsley-xml-3.0.0.swc-1719772199\library.swf"/>
+
+
+</LoadingSet>
+
+
+</LoadedSetList>
+
+
+<RemovedSetList label="RemovedSet List">
+
+
+<RemovedSet label="RemovedSet1:">
+
+
+<item  label="No Item present in this set"/>
+
+
+</RemovedSet>
+
+
+</RemovedSetList>
+
+
+</ListDetails>
+
+

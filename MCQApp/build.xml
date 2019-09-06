@@ -1,0 +1,97 @@
+<project name="MCQApp"
+    basedir="."
+    default="main">
+    <property name="src.dir"
+        value="src"/>
+    <property name="res.dir"
+        value="${src.dir}/res"/>
+    <property name="build.dir"
+        value="build"/>
+    <property name="classes.dir"
+        value="${build.dir}/classes"/>
+    <property name="jar.dir"
+        value="${build.dir}/jar"/>
+    <property name="main-class"
+        value="EntryPoint"/>
+    <!--     <property name="lib.dir" -->
+    <!--         value="libs"/> -->
+    <!--     <path id="build.classpath"> -->
+    <!--         <fileset dir="${lib.dir}" includes="**/*.jar"/> -->
+    <!--     </path> -->
+    <!--     <path id="build.classpath"> -->
+    <!--         <fileset dir="libs"> -->
+    <!--             <include name="**/*.jar"/> -->
+    <!--         </fileset> -->
+    <!--     </path> -->
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${jar.dir}"/>
+        <mkdir dir="${res.dir}"/>
+        <javac srcdir="${src.dir}"
+            destdir="${classes.dir}"/>
+        <!--             classpathref="build.classpath"/> -->
+        <!--         <copy todir="${classes.dir}"> -->
+        <!--             <fileset dir="${res.dir}"> -->
+        <!--                 <include name="*.*"/> -->
+        <!--             </fileset> -->
+        <!--         </copy> -->
+        <copy todir="${classes.dir}/res">
+            <fileset dir="${res.dir}"/>
+        </copy>
+    </target>
+    <!--     <target name="run" depends="jar"> -->
+    <!--         <java fork="true" classname="${main-class}"> -->
+    <!--             <classpath> -->
+    <!--                 <path refid="classpath"/> -->
+    <!--                 <path location="${jar.dir}/${ant.project.name}.jar"/> -->
+    <!--             </classpath> -->
+    <!--         </java> -->
+    <!--     </target> -->
+    <target name="package"
+        depends="compile">
+        <echo>=== PACKAGE ===</echo>
+        <!-- convert build.classpath to mf.classpath (the string needed for the manifest task) -->
+        <!--         <pathconvert property="mf.classpath" -->
+        <!--             pathsep=" "> -->
+        <!--             <path refid="build.classpath"/> -->
+        <!--             <flattenmapper/> -->
+        <!--         </pathconvert> -->
+        <!-- now build the manifest file, using mf.classpath -->
+        <tstamp/>
+        <!-- needed for TODAY -->
+        <manifest file="MANIFEST.MF">
+            <attribute name="Built-By"
+                value="Abhinav Sharma"/>
+            <attribute name="Created-By"
+                value="Abhinav Sharma"/>
+            <attribute name="Main-Class"
+                value="${main-class}"/>
+            <!--             <attribute name="Class-Path" -->
+            <!--                 value="${mf.classpath}"/> -->
+        </manifest>
+        <!-- create the jar file, including the manifest file we just created -->
+        <jar basedir="${classes.dir}"
+            destfile="${jar.dir}/mcq1.0-test.jar"
+            includes="**/*.*"
+            excludes="**/*Test*"
+            manifest="MANIFEST.MF"/>
+        <!-- copy all the jar files out to the destination directory (dest.dir) -->
+        <!--         <copy todir="${jar.dir}"> -->
+        <!--             <fileset dir="${lib.dir}"> -->
+        <!--                 <exclude name="junit*"/> -->
+        <!--                 <include name="*.jar"/> -->
+        <!--                 <include name="*.zip"/> -->
+        <!--             </fileset> -->
+        <!--         </copy> -->
+        <!-- move this file before the 'jar' task (and put it in the 'classes' dir) if you'd rather
+             include it in the jar -->
+        <!--         <copy file="${resources.dir}/log4j.properties" tofile="${dest.dir}/log4j.properties" overwrite="true" /> -->
+        <!--         <copy file="${resources.dir}/${properties.file}" tofile="${dest.dir}/${properties.file}" overwrite="true" /> -->
+        <!--         <delete dir="${dest.dir.classes}" /> -->
+    </target>
+    <target name="main"
+        depends="clean, package"/>
+</project>

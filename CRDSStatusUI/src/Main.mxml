@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:views="views.*" xmlns:parsley="http://www.spicefactory.org/parsley">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<parsley:ContextBuilder config="{AppConfig}"/>
+		<parsley:Configure/>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import events.GlobalEvent;
+			
+			import model.GlobalData;
+			
+			import mx.controls.Alert;
+			
+			import views.DetailsView;
+			
+			
+			[MessageHandler]
+			public function openNewTab(event:GlobalEvent):void
+			{
+				//Alert.show(event.data.toString());
+				
+				var newTab:DetailsView = new DetailsView();
+				newTab.label = "Details view "+rootTab.numChildren + 1;
+				newTab.gridData = GlobalData.detailsData;
+				rootTab.addChild(newTab);
+				
+				rootTab.selectedIndex = rootTab.getChildIndex(newTab);
+					
+			}
+		]]>
+	</fx:Script>
+	<s:controlBarContent>
+		<s:Label text="CRDS Progress Monitor"  fontSize="24" fontWeight="bold"/>
+	</s:controlBarContent>
+	<mx:TabNavigator id="rootTab" width="100%" height="100%" paddingTop="0" paddingBottom="0">
+		<mx:Box label="Main Dashboard" width="100%" height="100%">
+			<views:AdvDashboard/>
+		</mx:Box>
+	</mx:TabNavigator>
+</s:Application>

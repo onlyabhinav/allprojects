@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    minWidth="955" minHeight="600"
+    creationComplete="initdata(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+            import mx.events.CollectionEvent;
+            import mx.events.FlexEvent;
+            import mx.events.ListEvent;
+            import mx.validators.Validator;
+            import datagrid.ItemUpdateEvent;
+            import datagrid.MixItemVO;
+            import datagrid.RowVO;
+
+            [Bindable]
+            private var changedItems:ArrayCollection;
+
+            [Bindable]
+            private var listData:ArrayCollection;
+
+            /*
+                            listMetaData.addEventListener(CollectionEvent.COLLECTION_CHANGE,
+                                                          function showAlert():void
+                                                          {
+                                                              Alert.show('listMetaData changed');
+                                                          }); */
+
+            protected function doCalculation(event:ItemUpdateEvent):void
+            {
+                var gd:ArrayCollection = grdRvw.dataProvider as ArrayCollection;
+
+                log.text += new Date();
+                log.text += event.currentTarget + " \n";
+
+                if (changedItems == null)
+                    changedItems = new ArrayCollection();
+
+                logg(changedItems.getItemIndex(event.rowData) + ', ' + changedItems.length);
+
+                if (changedItems.getItemIndex(event.rowData) != -1)
+                {
+                    logg('Item already exists...');
+
+
+                }
+                else
+                {
+                    logg('Adding Item...');
+                    changedItems.addItem(event.rowData);
+                }
+
+
+
+                log.text = "";
+
+                for each (var o:Object in gd)
+                {
+                    var r:RowVO = o as RowVO;
+
+                    log.text += r.crdsId.value + '- ' + r.crdsId.checked + ', ';
+                    log.text += r.address.value + '- ' + r.address.checked + ', ';
+                    log.text += r.legalName.value + '- ' + r.legalName.checked + ', ';
+                    log.text += r.SSCI.value + '- ' + r.SSCI.checked + '\n ';
+
+                }
+
+            }
+
+            protected function enableGrid(event:MouseEvent):void
+            {
+                var gd:ArrayCollection = grdRvw.dataProvider as ArrayCollection;
+
+                for each (var o:RowVO in gd)
+                {
+                    o.select.checked = true;
+                }
+
+                gd.refresh();
+
+            }
+
+            protected function initdata(event:FlexEvent):void
+            {
+
+
+                listData = new ArrayCollection();
+
+
+                for (var i:Number = 0; i <= 10; i++)
+                {
+
+                    var item:RowVO = new RowVO();
+
+                    item.crdsId = new MixItemVO("CRDS" + i);
+                    item.legalName = new MixItemVO("Abhinav Inc " + i);
+                    item.address = new MixItemVO("Delhi " + i);
+                    item.SSCI = new MixItemVO("SS CI " + i);
+
+                    var select:MixItemVO = new MixItemVO();
+                    select.checked = false;
+
+                    item.select = select;
+
+                    listData.addItem(item);
+
+                }
+
+
+                grdRvw.dataProvider = listData;
+
+                grdRvw.addEventListener(ItemUpdateEvent.ITEM_UPDATED, doCalculation);
+
+
+            }
+
+            protected function logg(s:String):void
+            {
+                log.text += s + "\n";
+            }
+        ]]>
+    </fx:Script>
+    <s:VGroup id="vHeader"
+        width="100%" height="100%">
+        <s:Button 
+            label="Enable/Disable"
+            click="enableGrid(event)"/>
+        <mx:DataGrid id="grdRvw"
+            width="100%"
+            enabled="false">
+            <mx:columns>
+                <mx:DataGridColumn itemRenderer="datagrid.CheckLabelRenderer"
+                    dataField="select"/>
+                <mx:DataGridColumn itemRenderer="datagrid.CheckLabelRenderer"
+                    dataField="crdsId"/>
+                <mx:DataGridColumn itemRenderer="datagrid.CheckLabelRenderer"
+                    dataField="legalName"/>
+                <mx:DataGridColumn itemRenderer="datagrid.CheckLabelRenderer"
+                    dataField="address"/>
+                <mx:DataGridColumn itemRenderer="datagrid.CheckLabelRenderer"
+                    dataField="SSCI"/>
+            </mx:columns>
+        </mx:DataGrid>
+        <s:Label text="Logs"/>
+        <s:TextArea id="log"
+            width="100%" height="100%"/>
+    </s:VGroup>
+</s:Application>

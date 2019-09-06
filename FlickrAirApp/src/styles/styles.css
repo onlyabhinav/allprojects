@@ -1,0 +1,16 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+.heading{
+	fontWeight:bold;
+	fontSize:14;
+}
+.boldType{
+	fontWeight:bold;
+}
+
+.thumbnail{
+	fontWeight:bold;
+	color: blue;
+}

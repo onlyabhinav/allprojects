@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer 
+    width="100%" height="25"
+    creationComplete="bordercontainer1_creationCompleteHandler(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:view="org.abhinav.bugtracker.view.*">
+    <fx:Script>
+        <![CDATA[
+            import mx.events.CloseEvent;
+            import mx.events.FlexEvent;
+
+            import org.abhinav.bugtracker.events.CreatePopupEvent;
+
+            import spark.components.PopUpPosition;
+            import spark.events.TitleWindowBoundsEvent;
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+
+            protected function createMenu(event:MouseEvent):void
+            {
+                popAnc.displayPopUp = true;
+            }
+
+
+            protected function ttlWndw_closeHandler(evt:CloseEvent):void
+            {
+                popAnc.displayPopUp = false;
+            }
+
+            protected function ddl_changeHandler(evt:Event):void
+            {
+                if (!popAnc.displayPopUp)
+                {
+                    popAnc.displayPopUp = true;
+                }
+            }
+
+            protected function ttlWndw_focusOutHandler(event:FocusEvent):void
+            {
+                trace('Focus out encountered!!');
+                popAnc.displayPopUp = false;
+            }
+
+            protected function bordercontainer1_creationCompleteHandler(event:FlexEvent):void
+            {
+                trace('Focus out encountered!!');
+                // TODO Auto-generated method stub
+                this.addEventListener(FocusEvent.FOCUS_OUT, ttlWndw_focusOutHandler);
+            }
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <parsley:Configure/>
+    </fx:Declarations>
+    <s:backgroundFill>
+        <s:LinearGradient rotation="90">
+            <s:entries>
+                <s:GradientEntry color="0x7FC9FF"/>
+                <s:GradientEntry color="0x7FC9FF"/>
+            </s:entries>
+        </s:LinearGradient>
+    </s:backgroundFill>
+    <s:filters>
+        <s:DropShadowFilter angle="90"
+            strength="4"
+            distance="10"
+            blurX="16"
+            blurY="16"/>
+    </s:filters>
+    <!--    <s:layout>
+            <s:HorizontalLayout verticalAlign="middle"/>
+        </s:layout>-->
+    <s:HGroup width="100%" verticalAlign="middle">
+        <s:Image id="btnStart"
+            source="@Embed('assets/images/start-icon.png')"
+            click="createMenu(event)"
+            focusOut="ttlWndw_focusOutHandler(event)"
+            buttonMode="true"/>
+        <s:Spacer width="100%"/>
+        <s:Label 
+            text="&#169; {new Date().fullYear}"/>
+        <s:Spacer width="10"/>
+    </s:HGroup>
+    <s:PopUpAnchor id="popAnc"
+        popUpPosition="{PopUpPosition.ABOVE}">
+        <view:PopupMenu id="menu"
+            width="200"
+            focusOut="ttlWndw_focusOutHandler(event)"
+            close="ttlWndw_closeHandler(event)"/>
+    </s:PopUpAnchor>
+</s:BorderContainer>

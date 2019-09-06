@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer 
+    width="100%" height="40"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+
+    <fx:Script>
+        <![CDATA[
+            protected function btnLogoutHandler(event:MouseEvent):void
+            {
+                // TODO Auto-generated method stub
+
+            }
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <s:backgroundFill>
+        <s:LinearGradient rotation="90">
+            <s:entries>
+                <s:GradientEntry color="0x7FC9FF"/>
+                <s:GradientEntry color="0x7FC9FF"/>
+            </s:entries>
+        </s:LinearGradient>
+    </s:backgroundFill>
+    <s:filters>
+        <s:DropShadowFilter angle="90"
+            strength="4"
+            distance="10"
+            blurX="16"
+            blurY="16"/>
+    </s:filters>
+    <s:layout>
+        <s:HorizontalLayout verticalAlign="middle"/>
+    </s:layout>
+    <s:Spacer width="20"/>
+    <s:Label 
+        color="0xFFFFFF"
+        text="Bug Tracker" styleName="lblHeaderStyle"/>
+    <s:Spacer width="100%"/>
+
+    <s:Label text="Welcome abhinav.2310@gmail.com" verticalAlign="middle"/>
+    <s:Label text="|"/>
+    <mx:LinkButton label="logout" click="btnLogoutHandler(event)" />
+    <s:Spacer width="20"/>
+</s:BorderContainer>

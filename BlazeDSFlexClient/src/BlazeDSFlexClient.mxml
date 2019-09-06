@@ -1,0 +1,25 @@
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"            
+    >
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+            import mx.rpc.events.FaultEvent;
+            import mx.rpc.events.ResultEvent;
+
+            private function onResult(e:ResultEvent):void{
+                Alert.show("Server responds: "+e.result as String);               
+            }
+            private function onFault(e:FaultEvent):void{
+                Alert.show("Error retrieving data.","Error");
+            }
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <s:RemoteObject id="remoteService" destination="NameDetails"
+            result="onResult(event)" fault="onFault(event)" />
+    </fx:Declarations>
+    <s:Button label="Get Good Name" click="remoteService.getMyGoodName()"/>
+</s:Application> 

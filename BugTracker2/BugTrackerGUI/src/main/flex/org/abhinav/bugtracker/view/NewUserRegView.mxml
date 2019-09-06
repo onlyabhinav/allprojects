@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+    skinClass="org.abhinav.bugtracker.components.skins.ContainerSkin"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:Reusable="org.abhinav.bugtracker.components.Reusable.*">
+    <fx:Script>
+        <![CDATA[
+            import mx.controls.Alert;
+
+            import org.abhinav.bugtracker.events.NewUserEvent;
+            import org.abhinav.bugtracker.model.UserVO;
+
+            [Bindable]
+            public var errString:String;
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+
+
+
+            protected function btnSubmit_clickHandler(event:MouseEvent):void
+            {
+                errString = "";
+
+                if (txtUsername.text.length < 4)
+                    errString += "Username length >=4\n";
+                if (txtPassword1.text != txtPassword2.text)
+                    errString += "Password Mismatch\n";
+                if (txtEmail.text == "")
+                    errString += "Email required\n";
+                if (txtName.text == "")
+                    errString += "Name required\n";
+                if (txtCaptcha.text != captcha.code)
+                    errString += "Enter correct value as displayed\n";
+
+                if (errString.length > 0)
+                {
+                    Alert.show(errString, "Form validation error");
+                    captcha.refresh();
+                    return;
+                }
+
+                var user:UserVO = new UserVO();
+
+                user.username = txtUsername.text;
+                user.password = txtPassword1.text;
+                user.email = txtEmail.text;
+                user.fullname = txtName.text;
+
+                dispatcher(NewUserEvent.create(user));
+            }
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <parsley:Configure/>
+        <mx:StringValidator id="notEmpty"
+            source="{txtUsername}"
+            property="text"
+            minLength="4"
+            requiredFieldError="This is required"/>
+        <mx:EmailValidator id="validEmail"
+            source="{txtEmail}"
+            property="text"/>
+    </fx:Declarations>
+    <s:Form id="userForm"
+        errorColor="0xFF0000"
+        defaultButton="{btnSubmit}"
+        errorString="{errString}">
+        <s:FormHeading label="New User Signup"/>
+        <s:FormItem 
+            label="User Name:"
+            required="true">
+            <s:TextInput id="txtUsername"
+                prompt="Username"/>
+        </s:FormItem>
+        <s:FormItem 
+            label="Password:"
+            required="true">
+            <s:TextInput id="txtPassword1"
+                prompt="passowrd"/>
+        </s:FormItem>
+        <s:FormItem 
+            label="Confirm Password:"
+            required="true">
+            <s:TextInput id="txtPassword2"
+                prompt="confirm passowrd"/>
+        </s:FormItem>
+        <s:FormItem 
+            label="Full Name:"
+            required="true">
+            <s:TextInput id="txtName"
+                prompt="Full Name"/>
+        </s:FormItem>
+        <s:FormItem label="Email:">
+            <s:TextInput id="txtEmail"
+                prompt="Email"/>
+        </s:FormItem>
+        <s:FormItem label="Enter Words Below:">
+            <s:TextInput id="txtCaptcha"
+                text="{captcha.code}"
+                prompt="Enter words as shown in image"/>
+            <s:HGroup 
+                width="100%"
+                verticalAlign="middle">
+                <Reusable:Captcha id="captcha"
+                    width="100%" height="40"
+                    lenght="5"/>
+                <s:Button 
+                    width="25"
+                    icon="@Embed('assets/images/refresh-icon.png')"
+                    click="captcha.refresh();"/>
+            </s:HGroup>
+        </s:FormItem>
+        <s:FormItem>
+            <s:HGroup>
+                <s:Button label="Reset"/>
+                <s:Button id="btnSubmit"
+                    label="Submit"
+                    click="btnSubmit_clickHandler(event)"/>
+            </s:HGroup>
+        </s:FormItem>
+    </s:Form>
+</s:SkinnableContainer>

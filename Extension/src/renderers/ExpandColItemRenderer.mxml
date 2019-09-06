@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" height="100%" width="100%" horizontalAlign="center"
+    xmlns:s="library://ns.adobe.com/flex/spark" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:state="org.spicefactory.parsley.core.state.*" 
+    >
+
+    <!-- <s:Label text="{data}"/>-->
+
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ListCollectionView;
+            import mx.controls.Alert;
+
+            private var _itemId:String;
+
+            override public function set data(value:Object):void
+            {
+
+                _itemId = value.id;
+
+            }
+
+            protected function expandButtonclickHandler(event:MouseEvent):void
+            {
+                toggleState();
+
+                //   Alert.show("Item Id:"+_itemId +", index: "+ (this.owner) );
+
+            }
+
+            private function toggleState():void
+            {
+                if(this.currentState=="collapse")
+                    this.currentState="expand";
+                else
+                    this.currentState="collapse";
+            }
+
+        ]]>
+    </fx:Script>
+    <mx:states>
+        <s:State name="collapse"/>
+        <s:State name="expand" />
+    </mx:states>
+    <s:ButtonBarButton id="btnExpand" label.collapse="+" label.expand="-" width="30" click="expandButtonclickHandler(event)"/>
+</mx:VBox>

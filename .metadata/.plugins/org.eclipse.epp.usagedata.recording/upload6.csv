@@ -1,0 +1,251 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781026
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781240
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781384
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781545
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781680
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215781848
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350215783748
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350215812274
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.copyLineDown",1350215816374
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350215822480
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350215827808
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215830678
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350215832019
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215834679
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215834891
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215835075
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215835283
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215835531
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215835867
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215836235
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350215862857
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215883031
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215922447
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350215933635
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.copyLineDown",1350215935585
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215937788
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215937972
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215938139
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215938299
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215938435
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215938636
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215938812
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215939003
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordPrevious",1350215939203
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.select.wordNext",1350215939492
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350215948490
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.copyLineDown",1350215955154
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215955601
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215955786
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215955963
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215956108
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215956269
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.moveLineDown",1350215956410
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350215958475
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350215963249
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215967716
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215978401
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215980888
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215988658
+started,bundle,com.adobe.flexbuilder.css.editor,4.6.1.335153,"com.adobe.flexbuilder.css.editor",1350215988726
+opened,editor,com.adobe.flexbuilder.css.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.css.editors.CSSEditor",1350215990178
+activated,editor,com.adobe.flexbuilder.css.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.css.editors.CSSEditor",1350215990335
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350215990371
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215994029
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1350215994071
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215998762
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350215999994
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216000093
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350216004734
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216012642
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216018681
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350216022174
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216024918
+error,log,,,"Unhandled event loop exception",1350216024927
+error,log,,,"Unhandled event loop exception",1350216026541
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1350216035437
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.delete",1350216038844
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216051999
+error,log,,,"Unhandled event loop exception",1350216053111
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216053118
+error,log,,,"Unhandled event loop exception",1350216053138
+error,log,,,"Unhandled event loop exception",1350216055106
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216057159
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216088966
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216090712
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216108889
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216109353
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216114159
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216136987
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216140892
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216175160
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216177640
+opened,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216186335
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216186453
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216186746
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216186749
+opened,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216192450
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216192579
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216192833
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216192837
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216204368
+error,log,,,"Unhandled event loop exception",1350216206017
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216209676
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216255681
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216264577
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216269105
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216270103
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.project.cleanAction",1350216270119
+error,log,,,"Unhandled event loop exception",1350216273714
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216282352
+closed,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216282353
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216286058
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216288227
+opened,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216288356
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216288451
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350216288451
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216288755
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216288758
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1350216297501
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216299752
+error,log,,,"Unhandled event loop exception",1350216301481
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350216308657
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216311368
+error,log,,,"Unhandled event loop exception",1350216313155
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.text.contentAssist.proposals",1350216321361
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216324430
+error,log,,,"Unhandled event loop exception",1350216326212
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216328324
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216410861
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216412811
+opened,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216418397
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216418602
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216419667
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216419670
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216427659
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216437038
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1350216439368
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1350216442584
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216444481
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216446017
+error,log,,,"Unhandled event loop exception",1350216446109
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216488516
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1350216491272
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216491390
+started,bundle,com.adobe.flexbuilder.flexunit,4.6.1.335153,"com.adobe.flexbuilder.flexunit",1350216497639
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216521808
+error,log,,,"Unhandled event loop exception",1350216523485
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350216527933
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350216540802
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216543248
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216544625
+error,log,,,"Unhandled event loop exception",1350216544769
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216556123
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.delete",1350216561714
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216564262
+error,log,,,"Unhandled event loop exception",1350216565999
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216567098
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216580963
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216581380
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216586138
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216602616
+opened,editor,com.adobe.flexbuilder.as.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor",1350216630404
+activated,editor,com.adobe.flexbuilder.as.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor",1350216630599
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216633260
+closed,editor,com.adobe.flexbuilder.as.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.actionscript.ActionScriptEditor",1350216633260
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216636378
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216636724
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216636727
+executed,command,com.adobe.flexbuilder.editorcore,4.6.1.335153,"com.adobe.flexide.editorcore.add.comment",1350216670799
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216672800
+error,log,,,"Unhandled event loop exception",1350216674454
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350216675515
+error,log,,,"Error",1350216678188
+error,log,,,"batch nesting error",1350216678196
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216694172
+error,log,,,"Unhandled event loop exception",1350216696523
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216699293
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216716702
+opened,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216718282
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216718474
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-core-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216718881
+error,log,,,"Unsupported design description file G:/workspace/allprojects/BugTracker/BugTrackerGUI/libs/parsley-flex-3.0.0.swc\n   root tag: expected = design, actual = design\n   version: expected = 2, actual = ",1350216718885
+executed,command,com.adobe.flexbuilder.editorcore,4.6.1.335153,"com.adobe.flexide.editorcore.add.comment",1350216724426
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216728389
+error,log,,,"Unhandled event loop exception",1350216730133
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216734059
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216735715
+activated,editor,com.adobe.flexbuilder.css.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.css.editors.CSSEditor",1350216735784
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350216735816
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1350216740355
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216741950
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216755383
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1350216760853
+error,log,,,"Unhandled event loop exception",1350216762307
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216762313
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216763401
+error,log,,,"Unhandled event loop exception",1350216763911
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216784078
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216784667
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216787146
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216789503
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216794725
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350216797664
+executed,command,com.adobe.flexbuilder.editorcore,4.6.1.335153,"com.adobe.flexide.editorcore.add.comment",1350216803685
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216805670
+error,log,,,"Unhandled event loop exception",1350216807306
+executed,command,com.adobe.flexbuilder.editorcore,4.6.1.335153,"com.adobe.flexide.editorcore.add.comment",1350216820321
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350216821953
+error,log,,,"Unhandled event loop exception",1350216824449
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216831340
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216903381
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216907683
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216923878
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350216923887
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1350216926359
+started,bundle,org.eclipse.jst.j2ee.ejb,1.1.402.v201102071010,"org.eclipse.jst.j2ee.ejb",1350216926513
+started,bundle,org.eclipse.jst.j2ee.jca,1.1.400.v201005270700,"org.eclipse.jst.j2ee.jca",1350216926617
+started,bundle,org.eclipse.jst.jee.ejb,1.0.301.v201007070821,"org.eclipse.jst.jee.ejb",1350216926672
+started,bundle,org.eclipse.jst.jee.web,1.0.301.v201007070907,"org.eclipse.jst.jee.web",1350216926686
+started,bundle,org.eclipse.xsd,2.6.0.v20100914-1218,"org.eclipse.xsd",1350216927007
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216932271
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350216937481
+started,bundle,org.eclipse.wst.xsl.ui,1.1.1.v201009091745,"org.eclipse.wst.xsl.ui",1350216938219
+opened,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350216938256
+started,bundle,org.eclipse.m2e.editor.xml,1.0.0.20110607-2117,"org.eclipse.m2e.editor.xml",1350216938429
+activated,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350216938825
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350216938825
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1350216946233
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.navigate.linkWithEditor",1350216946270
+activated,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350216953028
+error,log,,,"Failed to load properties file for project 'BugTrackerService'",1350216965881
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350216967954
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1350216986136
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1350216987215
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1350216988508
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350217004014
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217006665
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217016003
+opened,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350217016100
+activated,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350217016198
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350217016199
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217018259
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217021455
+opened,editor,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.CompilationUnitEditor",1350217021589
+activated,editor,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.CompilationUnitEditor",1350217022198
+executed,command,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.navigate.openResource",1350217022198
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217026929
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217028519
+executed,command,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.edit.text.java.copy.qualified.name",1350217028528
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217035350
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217038407
+executed,command,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.edit.text.java.copy.qualified.name",1350217038418
+executed,command,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.edit.text.java.copy.qualified.name",1350217040888
+activated,editor,com.android.ide.eclipse.adt,20.0.3.v201208082019-427395,"com.android.ide.eclipse.editors.CommonXmlEditor",1350217045007
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1350217046246
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1350217048268
+activated,editor,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui.CompilationUnitEditor",1350217055496
+activated,editor,com.adobe.flexbuilder.mxml.editor,4.6.1.335153,"com.adobe.flexbuilder.editors.mxml.MXMLEditor",1350217057337
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217092381
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1350217231864

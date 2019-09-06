@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BugTrackerGUI/src/main/flex/org/issuetracker&apos; to &apos;abhinav.bugtracker&apos;" description="Rename resource &apos;issuetracker&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/flex/org/issuetracker" name="abhinav.bugtracker" stamp="1350210955568" updateReferences="true"/>
+</session>

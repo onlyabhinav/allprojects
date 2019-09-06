@@ -1,0 +1,34 @@
+<feed>
+    <name>address.csv</name>
+    <delimiter>|</delimiter>
+    <col_count>4</col_count>
+
+    <columns>
+        <column>
+            <name>Name</name>
+            <index>1</index>
+            <type>String</type>
+            <length>10</length>
+        </column>
+        <column>
+            <name>Age</name>
+            <index>2</index>
+            <type>Number</type>
+            <length>2</length>
+        </column>
+        <column>
+            <name>City</name>
+            <index>3</index>
+            <type>String</type>
+            <length>20</length>
+        </column>
+        <column>
+            <name>Phone</name>
+            <index>1</index>
+            <type>Number</type>
+            <length>10</length>
+        </column>
+    </columns>
+    <!-- <min_val>1</min_val> -->
+    <!-- <max_val>100</max_val> -->
+</feed>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- dpcontrols/adg/myComponents/ChartRenderer.mxml -->
+<mx:VBox height="300" width="100%" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:mx="library://ns.adobe.com/flex/mx" backgroundColor="0xE2E2E2"
+    xmlns:s="library://ns.adobe.com/flex/spark" xmlns:parsley="http://www.spicefactory.org/parsley">
+
+    <fx:Script>
+        <![CDATA[
+			import events.GlobalEvent;
+			
+			import org.spicefactory.parsley.core.messaging.impl.MessageDispatcher;
+			
+			[MessageDispatcher]
+			public var dispatcher:Function;
+
+			
+            protected function moreDetailsclickHandler(event:MouseEvent):void
+            {
+
+				//trace(event.currentTarget.toString()+data.idx);
+				
+				dispatcher(GlobalEvent.openNewTab('abcd'));
+				
+            }
+        ]]>
+    </fx:Script>
+	<fx:Declarations>
+		<parsley:Configure/>
+	</fx:Declarations>
+
+    <s:Button id="moreDetails" label="More Details" click="moreDetailsclickHandler(event)"/>
+    <mx:HBox  width="100%"
+        height="100%">
+        <mx:VBox  width="100%"
+            height="100%">
+            <mx:Form id="otherDetails" width="100%">
+                <mx:FormHeading label="Details"/>
+                <mx:FormItem width="100%" label="Total Records:">
+                    <s:Label text="2456"/>
+                </mx:FormItem>
+                <mx:FormItem width="100%" label="Total Rejections:">
+                    <s:Label text="451"/>
+                </mx:FormItem>
+                <mx:FormItem width="100%" label="Total Time:">
+                    <s:Label text="30 Mins"/>
+                </mx:FormItem>
+            </mx:Form>
+        </mx:VBox>
+        <mx:VBox  width="100%" horizontalAlign="center"
+            height="100%">
+            <s:Label text="Time Distribution" width="100%" fontWeight="bold"/>
+            <mx:PieChart dataProvider="{data.detail}" height="100%" width="100%" id="myChart"
+                showDataTips="true" >
+                <mx:series>
+                    <mx:PieSeries labelPosition="callout" field="amount"/>
+                </mx:series>
+            </mx:PieChart>  
+           <!-- <mx:Legend dataProvider="{myChart}"/>-->
+        </mx:VBox>
+
+    </mx:HBox>
+</mx:VBox>

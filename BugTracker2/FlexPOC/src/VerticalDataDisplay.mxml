@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    minWidth="955" minHeight="600"
+    creationComplete="initdata(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+            import mx.events.CollectionEvent;
+            import mx.events.FlexEvent;
+            import mx.validators.Validator;
+
+            [Bindable]
+            private var listData:ArrayCollection = new ArrayCollection([
+                                                                       { crdsId: "01", legalName: "SBI", address: "Delhi", SSCI: "1234" },
+                                                                       { crdsId: "02", legalName: "SBI", address: "Delhi", SSCI: "1234" },
+                                                                       { crdsId: "03", legalName: "SBI", address: "Delhi", SSCI: "1234" },
+                                                                       { crdsId: "04", legalName: "SBI", address: "Delhi", SSCI: "1234" },
+                                                                       ]);
+
+            [Bindable]
+            private var listMetaData:ArrayCollection = new ArrayCollection([
+                                                                           { AttrName: "CRDS ID", dataId: "crdsId", Core: true, Other: "NS", selected: true },
+                                                                           { AttrName: "Legal Name", dataId: "legalName", Core: true, Other: "NS", selected: true },
+                                                                           { AttrName: "Address", dataId: "address", Core: true, Other: "NS", selected: false },
+                                                                           { AttrName: "SSCI", dataId: "SSCI", Core: false, Other: "NS", selected: true },
+                                                                           ]);
+
+            protected function initdata(event:FlexEvent):void
+            {
+                var vItemRenderer:ClassFactory = new ClassFactory(VerticalItemRenderer);
+
+                vItemRenderer.properties = { verticalMetaData: listMetaData };
+
+                grpListData.itemRenderer = vItemRenderer;
+
+                grpListData.dataProvider = listData;
+
+
+
+            }
+            /*
+                            listMetaData.addEventListener(CollectionEvent.COLLECTION_CHANGE,
+                                                          function showAlert():void
+                                                          {
+                                                              Alert.show('listMetaData changed');
+                                                          }); */
+        ]]>
+    </fx:Script>
+    <s:HGroup id="vHeader"
+        width="100%" height="100%">
+        <s:List id="attributes"
+            width="100"
+            dataProvider="{listMetaData}"
+            borderAlpha="0"
+            itemRenderer="ListItemRenderer"/>
+        <s:DataGroup id="grpListData">
+            <s:layout>
+                <s:HorizontalLayout/>
+            </s:layout>
+        </s:DataGroup>
+    </s:HGroup>
+</s:Application>

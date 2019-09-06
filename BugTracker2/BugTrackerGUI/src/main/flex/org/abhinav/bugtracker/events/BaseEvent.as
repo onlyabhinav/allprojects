@@ -1,0 +1,24 @@
+package org.abhinav.bugtracker.events
+{
+    import flash.events.Event;
+    import flash.sampler.getInvocationCount;
+
+    public class BaseEvent extends Event
+    {
+        public static var GET_ISSUES:String = "getIssues";
+
+        public function BaseEvent(type:String, bubbles:Boolean = false, cancelable:Boolean = false)
+        {
+            super(type, bubbles, cancelable);
+        }
+
+        public static function getEvent(type:String):BaseEvent
+        {
+            var event:BaseEvent = new BaseEvent(GET_ISSUES);
+
+            return event;
+        }
+    }
+}
+
+

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<qdata>
+    <quiz id="MCQMAT0001">
+        <course>Class 1</course>
+        <subject>Math</subject>
+        <chapter>01</chapter>
+        <description>Basic Algebra</description>
+        <bg>y</bg>
+        <answer>01</answer>
+        <bgimage>math.jpg</bgimage>
+        <questions>
+            <question>
+                <type>MCQ</type>
+                <problem>What is Algebra?</problem>
+                <bg>y</bg>
+                <bgimage>bgalgebra.jpg</bgimage>
+                <options>
+                    <option>
+                        <oid>01</oid>
+                        <text>It is Maths</text>
+                        <media>algebra.jpg</media>
+                    </option>
+                    <option>
+                        <oid>02</oid>
+                        <text>It is Science</text>
+                        <media>science.jpg</media>
+                    </option>
+                    <option>
+                        <oid>03</oid>
+                        <text>It is English</text>
+                        <media>english.jpg</media>
+                    </option>
+                    <option>
+                        <oid>04</oid>
+                        <text>It is History</text>
+                        <media>history.jpg</media>
+                    </option>
+                </options>
+            </question>
+        </questions>
+    </quiz>
+    <quiz id="MCQMAT0002">
+        <course>Class 1</course>
+        <subject>Math</subject>
+        <chapter>01</chapter>
+        <description>Advance Algebra</description>
+        <bg>y</bg>
+        <answer>01</answer>
+        <bgimage>math.jpg</bgimage>
+        <questions>
+            <question>
+                <type>MCQ</type>
+                <problem>Why is Algebra?</problem>
+                <bg>y</bg>
+                <bgimage>bgalgebra.jpg</bgimage>
+                <options>
+                    <option>
+                        <oid>01</oid>
+                        <text>Due Maths</text>
+                        <media>algebra.jpg</media>
+                    </option>
+                    <option>
+                        <oid>02</oid>
+                        <text>Due Science</text>
+                        <media>science.jpg</media>
+                    </option>
+                    <option>
+                        <oid>03</oid>
+                        <text>Due English</text>
+                        <media>english.jpg</media>
+                    </option>
+                    <option>
+                        <oid>04</oid>
+                        <text>Due History</text>
+                        <media>history.jpg</media>
+                    </option>
+                </options>
+            </question>
+        </questions>
+    </quiz>
+</qdata>

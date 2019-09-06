@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup 
+    width="100%" height="100%"
+    paddingBottom="5"
+    paddingTop="5"
+    gap="5"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import demo.mvc.flickr.model.vo.ImageVO;
+
+            import flash.net.sendToURL;
+
+            import mx.collections.ArrayCollection;
+
+            import spark.events.IndexChangeEvent;
+
+            public static const SELECT:String = "select";
+
+            public static const SEARCH:String = "search";
+
+            [Bindable]
+            public var selectedImage:ImageVO;
+
+            [Bindable]
+            public var images:ArrayCollection = new ArrayCollection();
+
+            protected function itemSelected(event:IndexChangeEvent):void
+            {
+                selectedImage = new ImageVO();
+
+                selectedImage.name = (imageList.selectedItem).credit;
+                selectedImage.path = (imageList.selectedItem).thumbnail.url;
+                dispatchEvent(new Event(SELECT, true));
+            }
+
+            protected function doSearch(event:MouseEvent):void
+            {
+                if (txtKey.text != "" && txtKey.text != null)
+                    dispatchEvent(new Event(SEARCH, true));
+            }
+        ]]>
+    </fx:Script>
+    <s:HGroup 
+        horizontalAlign="center"
+        verticalAlign="middle">
+        <s:Label 
+            text="Search: " styleName="boldType"/>
+        <s:TextInput id="txtKey"
+            text="Abhinav"/>
+        <s:Button id="btnGo"
+            width="40"
+            label="Go"
+            click="doSearch(event)"/>
+    </s:HGroup>
+    <s:List id="imageList"
+        width="100%" height="100%"
+        dataProvider="{images}"
+        change="itemSelected(event)"
+        itemRenderer="demo.mvc.flickr.view.components.renderers.ImageThumbRenderer"/>
+</s:VGroup>

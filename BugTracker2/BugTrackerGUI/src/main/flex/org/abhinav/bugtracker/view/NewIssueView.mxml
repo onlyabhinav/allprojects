@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer 
+    creationComplete="loadXMLItems(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley">
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.Alert;
+            import mx.events.FlexEvent;
+            import mx.rpc.xml.SimpleXMLDecoder;
+            import mx.utils.ArrayUtil;
+
+            import org.abhinav.bugtracker.events.ChangeViewEvent;
+            import org.abhinav.bugtracker.events.NewIssueEvent;
+            import org.abhinav.bugtracker.model.IssueVO;
+            import org.abhinav.bugtracker.constants.NewIssueItems;
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+
+            protected function loadXMLItems(event:FlexEvent):void
+            {
+                trace("Decodig started...");
+                var xml:XMLDocument = new XMLDocument(newIssueDataItems.toString());
+                var decoder:SimpleXMLDecoder = new SimpleXMLDecoder();
+                var obj:Object = decoder.decodeXML(xml);
+
+                NewIssueItems.lstComponents = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.components.option));
+                NewIssueItems.lstSeverities = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.severities.option));
+                NewIssueItems.lstReproducibility = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.reproducibility.option));
+                NewIssueItems.lstDiscoverability = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.discoverability.option));
+                NewIssueItems.lstVersions = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.versions.option));
+                NewIssueItems.lstOS = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.os.option));
+                NewIssueItems.lstEclipseConfig = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.eclipse.option));
+                NewIssueItems.lstJDK = new ArrayCollection(ArrayUtil.toArray(obj.formdata.newissue.jdk.option));
+
+
+            }
+
+            protected function submitNewRequest(event:MouseEvent):void
+            {
+
+                var newIssue:IssueVO = new IssueVO();
+
+                newIssue.AssignedTo = lstAssignedTo.selectedItem;
+                newIssue.Build = lstBuilds.selectedItem;
+                newIssue.Component = lstComponents.selectedItem;
+                newIssue.Description = description.text;
+                newIssue.Discoverability = lstDiscoverability.selectedItem;
+                newIssue.EclipseConfig = lstEclipseConfig.selectedItem;
+                newIssue.IssueType = lstIssueTypes.selectedItem;
+                newIssue.JDK = lstJDK.selectedItem;
+                newIssue.MileStone = lstMileStone.selectedItem;
+                newIssue.OS = lstMileStone.selectedItem;
+
+                dispatcher(NewIssueEvent.create(newIssue));
+
+                trace('New Issue request dispatched');
+
+
+                // description.text = newissue.validateIssue();
+
+            }
+
+            [MessageHandler]
+            protected function issueCreateResult(event:NewIssueEvent):void
+            {
+                dispatcher(ChangeViewEvent.changeTo(ChangeViewEvent.SEARCH_VIEW));
+            }
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        <fx:XML id="newIssueDataItems"
+            source="assets/data/form-data.xml"/>
+        <parsley:Configure/>
+    </fx:Declarations>
+    <s:Panel id="pnlNewIssue"
+        width="100%" height="100%"
+        title="Create Issue">
+        <!--        <s:controlBarLayout>
+                    <s:HorizontalLayout horizontalAlign="right"/>
+                </s:controlBarLayout>-->
+        <s:controlBarContent>
+            <s:Spacer width="100%"/>
+            <s:Button id="btnCancel"
+                label="Cancel"
+                creationComplete="loadXMLItems(event)"/>
+            <s:Button id="btnCreate"
+                label="Create"
+                click="submitNewRequest(event)"/>
+        </s:controlBarContent>
+        <s:layout>
+            <s:HorizontalLayout 
+                horizontalAlign="center"
+                verticalAlign="top"/>
+        </s:layout>
+        <s:Form id="generalInfo"
+            width="100%">
+            <s:FormItem label="Project:">
+                <s:ComboBox id="lstProjects"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstProjects}"
+                    prompt="Project"/>
+            </s:FormItem>
+            <s:FormItem label="Issue Type:">
+                <s:ComboBox id="lstIssueTypes"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstIssueTypes}"
+                    prompt="Issue"/>
+            </s:FormItem>
+            <s:FormItem label="Severity:">
+                <s:ComboBox id="lstSeverities"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstSeverities}"
+                    prompt="Severity"/>
+            </s:FormItem>
+            <s:FormItem label="Components:">
+                <s:ComboBox id="lstComponents"
+                    width="100%"
+                    labelField="title"
+                    dataProvider="{NewIssueItems.lstComponents}"
+                    prompt="Components"/>
+            </s:FormItem>
+            <s:FormItem label="Reproducibility:">
+                <s:ComboBox id="lstReproducibility"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstReproducibility}"
+                    prompt="Reproducibility"/>
+            </s:FormItem>
+            <s:FormItem label="Discoverability:">
+                <s:ComboBox id="lstDiscoverability"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstDiscoverability}"
+                    prompt="Discoverability"/>
+            </s:FormItem>
+            <s:HGroup width="100%">
+                <s:FormItem 
+                    width="100%"
+                    label="Found in version:">
+                    <s:ComboBox id="lstVersions"
+                        width="100%"
+                        dataProvider="{NewIssueItems.lstVersions}"
+                        prompt="version"/>
+                </s:FormItem>
+                <s:FormItem 
+                    width="100%"
+                    label="Build:">
+                    <s:ComboBox id="lstBuilds"
+                        width="100%"
+                        dataProvider="{NewIssueItems.lstBuilds}"
+                        prompt="Build"/>
+                </s:FormItem>
+            </s:HGroup>
+            <s:HGroup width="100%">
+                <s:FormItem 
+                    width="100%"
+                    label="Affected OS:">
+                    <s:ComboBox id="lstOS"
+                        width="100%"
+                        dataProvider="{NewIssueItems.lstOS}"
+                        prompt="OS"/>
+                </s:FormItem>
+                <s:FormItem 
+                    width="100%"
+                    label="Version:">
+                    <s:TextInput id="lstOSVersion"
+                        width="100%"
+                        prompt="OS version"/>
+                </s:FormItem>
+            </s:HGroup>
+        </s:Form>
+        <s:Line yFrom="0"
+            yTo="{this.height-20}"
+            alpha="1">
+            <s:stroke>
+                <s:SolidColorStroke color="0xCCCCCC"/>
+            </s:stroke>
+        </s:Line>
+        <s:Form id="issueDescription"
+            width="100%">
+            <s:FormItem label="Steps to reproduce:">
+                <s:TextArea id="description"
+                    width="100%"/>
+            </s:FormItem>
+            <s:FormItem label="Eclipse Configuration:">
+                <s:ComboBox id="lstEclipseConfig"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstEclipseConfig}"
+                    prompt="Eclipse Configuration"/>
+            </s:FormItem>
+            <s:FormItem label="JDK:">
+                <s:ComboBox id="lstJDK"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstJDK}"
+                    prompt="JDK"/>
+            </s:FormItem>
+            <s:FormItem label="Assigned to:">
+                <s:ComboBox id="lstAssignedTo"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstAssignedTo}"
+                    prompt="Assigned to"/>
+            </s:FormItem>
+            <s:FormItem label="Milestone:">
+                <s:ComboBox id="lstMileStone"
+                    width="100%"
+                    dataProvider="{NewIssueItems.lstMileStone}"
+                    prompt="Milestone"/>
+            </s:FormItem>
+        </s:Form>
+    </s:Panel>
+</s:SkinnableContainer>

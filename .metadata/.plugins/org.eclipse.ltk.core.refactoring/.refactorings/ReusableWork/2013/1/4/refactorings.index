@@ -1,0 +1,30 @@
+1358961074408	Move compilation unit
+1358961087254	Move compilation units
+1358961093985	Delete element
+1358964526717	Rename type 'FileEncoder'
+1358964685783	Rename method 'bytesToMb'
+1358968088805	Rename field 'clipboard'
+1358970401944	Rename local variable 'doConversion'
+1359051061386	Delete element
+1359051131386	Rename field 'convertToB64'
+1359051556991	Rename field 'b64String'
+1359052014612	Rename type 'Pass'
+1359054644326	Rename field 'getClipboardContent'
+1359137083798	Delete element
+1359137138024	Rename package 'com.tcs.abhinavs1.utils'
+1359137180998	Rename package 'com.tcs.abhinavs1.validators'
+1359137226743	Rename type 'MainEntryPoint'
+1359138257906	Move compilation units
+1359138266822	Delete element
+1359138299127	Move compilation units
+1359175141742	Copy file
+1359176208872	Delete element
+1359176215010	Delete element
+1359176588891	Rename package 'maingui'
+1359177072357	Rename type 'AppDashboard'
+1359182730006	Rename field 'guiEncoder'
+1359182752895	Rename field 'btnEncoder'
+1359182766852	Rename field 'guiDecoder'
+1359220368130	Rename type 'AppConstants'
+1359225279379	Delete element
+1359231335493	Copy file

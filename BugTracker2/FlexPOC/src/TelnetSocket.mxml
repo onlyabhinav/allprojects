@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+    layout="vertical"
+    xmlns:mx="http://www.adobe.com/2006/mxml">
+    <mx:Script>
+        <![CDATA[
+            import com.example.programmingas3.socket.Telnet;
+
+            private var telnetClient:Telnet;
+
+            private function connect():void
+            {
+                telnetClient = new Telnet(serverName.text, int(portNumber.text),
+                                          output);
+                console.title = "Connecting to " + serverName.text + ":" + portNumber.text;
+                console.enabled = true;
+            }
+
+            private function sendCommand():void
+            {
+                var ba:ByteArray = new ByteArray();
+                ba.writeMultiByte(command.text + "\n", "UTF-8");
+                telnetClient.writeBytesToSocket(ba);
+                command.text = "";
+            }
+        ]]>
+    </mx:Script>
+    <mx:Label id="title"
+        fontSize="24"
+        fontStyle="normal"
+        text="Telnet Socket Example"/>
+    <mx:Label id="subtitle"
+        fontSize="12"
+        text="From Programming ActionScript 3.0, Chapter 22: Networking and communication"/>
+    <mx:ApplicationControlBar width="100%">
+        <mx:Label text="Server:"/>
+        <mx:TextInput id="serverName"
+            width="100%"/>
+        <mx:Spacer/>
+        <mx:Label text="Port:"/>
+        <mx:TextInput id="portNumber"
+            textAlign="right"
+            text="23" maxChars="5"
+            restrict="0-9"/>
+        <mx:Spacer/>
+        <mx:Button 
+            label="Login"
+            click="connect();"/>
+    </mx:ApplicationControlBar>
+    <mx:Spacer/>
+    <mx:Panel id="console"
+        width="100%" height="100%"
+        paddingBottom="10"
+        paddingLeft="10"
+        paddingRight="10"
+        paddingTop="10"
+        enabled="false">
+        <mx:TextArea id="output"
+            width="100%" height="100%"
+            fontFamily="Courier New"
+            editable="false"/>
+        <mx:ControlBar>
+            <mx:Label text="Command:"/>
+            <mx:TextInput id="command"
+                width="100%"
+                enter="sendCommand();"/>
+            <mx:Button 
+                label="Send"
+                click="sendCommand();"/>
+        </mx:ControlBar>
+    </mx:Panel>
+</mx:Application>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+    skinClass="org.abhinav.bugtracker.components.skins.ContainerSkin"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:Reusable="org.abhinav.bugtracker.components.Reusable.*" xmlns:view="org.abhinav.bugtracker.view.*">
+    <fx:Declarations>
+        <parsley:Configure/>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import org.abhinav.bugtracker.events.ChangeViewEvent;
+            import org.abhinav.bugtracker.constants.AppConstants;
+
+            [MessageDispatcher]
+            public var dispatcher:Function;
+        ]]>
+    </fx:Script>
+    <s:HGroup 
+        width="100%" height="100%"
+        horizontalAlign="center"
+        verticalAlign="middle">
+        <s:VGroup 
+            width="100%" height="100%"
+            horizontalAlign="center"
+            verticalAlign="middle">
+            <!--            <s:Label
+                            text="Issue Tracker" styleName="applicationLabel"/>-->
+
+            <view:LoginPageView />
+
+            <!--            <s:Label
+                            text="Bug and issue management system"
+                            styleName="applicationDesc"/>-->
+        </s:VGroup>
+        <s:Line yFrom="0"
+            yTo="{this.height-20}"
+            alpha=".2">
+            <s:stroke>
+                <s:SolidColorStroke color="0x404040"/>
+            </s:stroke>
+        </s:Line>
+        <s:VGroup 
+            width="100%" height="100%"
+            horizontalAlign="center"
+            verticalAlign="middle"
+            gap="20">
+            <s:Button id="btnSearchDatabase"
+                label="Search ( Browse without registration)"
+                click="dispatcher(ChangeViewEvent.changeTo(ChangeViewEvent.SEARCH_VIEW))"/>
+            <!--<s:Button id="btnLogin"
+                label="Login"
+                click="dispatcher(ChangeViewEvent.changeTo(ChangeViewEvent.LOGIN_VIEW))"/>-->
+            <s:Button id="btnRegister"
+                label="Register / Create new account"
+                click="dispatcher(ChangeViewEvent.changeTo(ChangeViewEvent.NEW_USER_VIEW))"/>
+        </s:VGroup>
+    </s:HGroup>
+</s:SkinnableContainer>

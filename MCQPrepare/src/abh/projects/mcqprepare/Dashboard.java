@@ -1,0 +1,147 @@
+/**
+ * 
+ */
+package abh.projects.mcqprepare;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
+import abh.projects.mcqapp.commons.AppColors;
+import abh.projects.mcqapp.commons.AppProperties;
+import abh.projects.mcqapp.commons.CommonGUITasks;
+
+/**
+ * @author Abhinav
+ */
+public class Dashboard
+    extends JPanel
+    implements ActionListener
+{
+
+    static JFrame frame;
+
+    /** The decoder window. */
+    JButton btnCreateCourse, btnCreateMCQ;
+
+    /** The icon. */
+    JLabel icon;
+
+    /** The error. */
+    JTextArea error;
+
+    /** The is ok. */
+    Boolean isOK = false;
+
+    /** The key. */
+    private String key = "";
+
+    public Dashboard()
+    {
+        super( new BorderLayout() );
+
+        btnCreateCourse = new JButton( "Create Course" );
+        btnCreateMCQ = new JButton( "Create MCQ" );
+
+        btnCreateMCQ.setBackground( AppColors.LIGHT_RED );
+        btnCreateCourse.setBackground( AppColors.COOL_GREEN );
+
+        btnCreateMCQ.addActionListener( this );
+        btnCreateCourse.addActionListener( this );
+
+        icon = new JLabel( createImageIcon( AppProperties.ICON_LOCKED ) );
+
+        JPanel buttonPanel = new JPanel( new FlowLayout( FlowLayout.CENTER ) );
+        buttonPanel.add( btnCreateCourse );
+        buttonPanel.add( btnCreateMCQ );
+
+        add( buttonPanel, BorderLayout.PAGE_START );
+        add( icon, BorderLayout.CENTER );
+
+        setBackground( Color.WHITE );
+
+        setFocusable( true );
+    }
+
+    public static void start()
+    {
+        Runnable showUI = new Runnable()
+        {
+            public void run()
+            {
+                try
+                {
+                    UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
+                }
+                catch ( Exception e )
+                {
+                    System.err.println( e.getMessage() );
+                }
+
+                frame = CommonGUITasks.getWindow( AppProperties.APP_NAME, AppProperties.DEFAULT_DIMENSION );
+                frame.add( new Dashboard() );
+                frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+                // frame.setExtendedState( Frame.MAXIMIZED_BOTH );
+                Toolkit tk = Toolkit.getDefaultToolkit();
+                int xSize = ( (int) tk.getScreenSize().getWidth() );
+                int ySize = ( (int) tk.getScreenSize().getHeight() );
+                // frame.setSize( xSize - 50, ySize - 50 );
+                frame.setSize( xSize - 20, ySize - 50 );
+
+                // frame.setLocation(25, 10 );
+                frame.setLocation( 10, 10 );
+
+                frame.setVisible( true );
+            }
+        };
+
+        SwingUtilities.invokeLater( showUI );
+
+    }
+
+    // ---------------------------------------
+    // Interface methods implementations
+    // ---------------------------------------
+
+    public void actionPerformed( ActionEvent e )
+    {
+        if ( e.getSource() == btnCreateCourse )
+        {
+            icon.setIcon( createImageIcon( AppProperties.ICON_UNLOCKED ) );
+        }
+        else if ( e.getSource() == btnCreateMCQ )
+        {
+            icon.setIcon( createImageIcon( AppProperties.ICON_LOCKED ) );
+        }
+    }
+
+    public ImageIcon createImageIcon( String path )
+    {
+        URL imgURL = getClass().getResource( path );
+
+        if ( imgURL != null )
+        {
+            return new ImageIcon( imgURL );
+        }
+        else
+        {
+            System.err.println( "Couldn't find file: " + path );
+            return null;
+        }
+    }
+
+}

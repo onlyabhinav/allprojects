@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- http://blog.flexexamples.com/2009/11/13/styling-the-selected-tab-on-a-spark-tabbar-control-in-flex-4/ -->
+<s:Application name="Spark_TabBar_statesStyle_test"
+    creationComplete="init()"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:layout="flexlib.scheduling.scheduleClasses.layout.*">
+    <fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		s|TabBar s|ButtonBarButton:upAndSelected,
+		s|TabBar s|ButtonBarButton:overAndSelected,
+		s|TabBar s|ButtonBarButton:downAndSelected {
+			chromeColor: #FFBB33;
+		}
+	</fx:Style>
+    <fx:Declarations>
+        <!-- <s:Scale id="componentShowEffect"
+             scaleXFrom="0"
+             scaleXTo="1.0"
+             duration="1000"/>
+         <s:Scale id="componentHideEffect"
+             scaleXFrom="1.0"
+             scaleXTo="0.0"
+             duration="1000"/>-->
+        <s:Fade id="componentShowEffect"
+            alphaFrom="0"
+            alphaTo="1"
+            duration="1000"/>
+        <s:Fade id="componentHideEffect"
+            alphaFrom="1"
+            alphaTo="0"
+            duration="1000"/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+
+            [Bindable]
+            public var provider:ArrayCollection;
+
+            public function init():void
+            {
+                provider = new ArrayCollection([ "one", "two", "three", "four", "five",
+                                                 "six" ]);
+            }
+        ]]>
+    </fx:Script>
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+    <s:TabBar id="tabBar"
+        horizontalCenter="0"
+        verticalCenter="0">
+        <s:dataProvider>
+            <s:ArrayList source="[1,The Quick,Brown Fox,Jumps over the,Lazy dog]"/>
+        </s:dataProvider>
+    </s:TabBar>
+    <s:List id="list"
+        creationCompleteEffect="{componentShowEffect}"
+        hideEffect="{componentHideEffect}"
+        showEffect="{componentShowEffect}"
+        dataProvider="{provider}" selectedIndex="0">
+        <s:itemRenderer>
+            <fx:Component>
+                <s:ItemRenderer>
+                    <s:states>
+                        <s:State name="normal"/>
+                        <s:State name="hovered"/>
+                        <s:State name="selected"/>
+                    </s:states>
+                    <s:Rect 
+                        left="0" right="0" top="0" bottom="0">
+                        <s:fill>
+                            <s:SolidColor 
+                                color="0x000088"
+                                alpha="0.6"/>
+                        </s:fill>
+                    </s:Rect>
+                    <s:Rect 
+                        left="0" right="0" top="0" bottom="0">
+                        <s:fill>
+                            <s:SolidColor 
+                                color="0x008800"
+                                alpha="0.6"/>
+                        </s:fill>
+                    </s:Rect>
+                    <s:Label text="{data}"/>
+                </s:ItemRenderer>
+            </fx:Component>
+        </s:itemRenderer>
+    </s:List>
+    <s:Button 
+        label="toggle list"
+        click="list.visible=!list.visible"/>
+</s:Application>

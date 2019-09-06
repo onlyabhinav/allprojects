@@ -1,0 +1,514 @@
+/**
+ * 
+ */
+package gui.networks;
+
+import gui.listeners.AllListeners;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
+import javax.swing.table.DefaultTableModel;
+
+import com.neoworks.network.ConTest;
+import com.neoworks.network.Server;
+import com.neoworks.utils.Commons;
+import com.neoworks.utils.GeneralProps;
+import com.neoworks.values.AppSettings;
+import com.neoworks.values.Strings;
+
+/**
+ * @author Abhinav
+ */
+@SuppressWarnings( "serial" )
+public class PortMonitor
+    extends JPanel
+    implements ActionListener, PropertyChangeListener
+{
+
+    JButton loadFile, startTest;
+
+    JLabel icon;
+
+    JTextArea error;
+
+    JTable table;
+
+    DefaultTableModel model;
+
+    JFileChooser fc;
+
+    AllListeners listener;
+
+    Boolean isOK = false;
+
+    int maxThreads = 4;
+
+    static JFrame frame;
+
+    private JProgressBar progressBar;
+
+    Task task;
+
+    public static List<Server> servers;
+
+    public static List<ConTest> results;
+
+    public PortMonitor()
+    {
+        super( new BorderLayout() );
+
+        if ( !AppSettings.hasValidLicense() )
+        {
+            // removeAll();
+
+            error = AppSettings.getLogArea( error );
+            error.setBackground( Color.BLACK );
+            error.setForeground( Color.RED );
+            error.setText( Strings.LICENSE_EXPIRED );
+            error.setFont( new Font( "Monospace", Font.TRUETYPE_FONT, 24 ) );
+
+            add( error );
+
+            System.err.println( Strings.LICENSE_EXPIRED );
+            return;
+        }
+
+        fc = new JFileChooser();
+
+        loadFile = AppSettings.getButton( new JButton( "Load" ) );
+        startTest = AppSettings.getButton( new JButton( "Test" ) );
+
+        startTest.setBackground( AppSettings.Red );
+        loadFile.setBackground( AppSettings.Green );
+
+        startTest.addActionListener( this );
+        loadFile.addActionListener( this );
+
+        progressBar = new JProgressBar( 0, 100 );
+        progressBar.setValue( 0 );
+
+        table = new JTable();
+        model = new DefaultTableModel();
+        table.setModel( model );
+        model.setColumnIdentifiers( new String[] { "Host Name", "Port", "Status", "Message" } );
+
+        // icon = new JLabel( Commons.createImageIcon( Strings.ICON_LOCKED ) );
+
+        // setState( isOK );
+
+        // table.set
+
+        JPanel buttonPanel = new JPanel( new FlowLayout( FlowLayout.CENTER ) );
+        buttonPanel.add( loadFile );
+        buttonPanel.add( startTest );
+        buttonPanel.add( progressBar );
+
+        add( buttonPanel, BorderLayout.PAGE_START );
+        add( table, BorderLayout.CENTER );
+
+        setBackground( Color.LIGHT_GRAY );
+
+        setFocusable( true );
+    }
+
+    public static void start()
+    {
+        Runnable showUI = new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                // frame = new JFrame( Strings.TITLE_LOCKED );
+                frame = AppSettings.getWindow( new JFrame( Strings.TITLE_LOCKED ) );
+                frame.add( new PortMonitor() );
+                frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+
+                frame.setAlwaysOnTop( false );
+
+                Toolkit tk = Toolkit.getDefaultToolkit();
+                int xSize = ( (int) tk.getScreenSize().getWidth() );
+                int ySize = ( (int) tk.getScreenSize().getHeight() );
+                frame.setSize( xSize - 50, ySize - 50 );
+
+                frame.setLocation( 25, 10 );
+                frame.setVisible( true );
+            }
+        };
+
+        SwingUtilities.invokeLater( showUI );
+
+    }
+
+    public void actionPerformed( ActionEvent e )
+    {
+        if ( e.getSource() == loadFile )
+        {
+            // FileFilter csvFileFilter = new FileNameExtensionFilter( "CSV Files", ".csv" );
+            // fc.addChoosableFileFilter( new csvf )
+            // fc.setFileFilter( csvFileFilter );
+            int returnVal = fc.showOpenDialog( this );
+
+            if ( returnVal == JFileChooser.APPROVE_OPTION )
+            {
+                ArrayList<String[]> serversList = (ArrayList<String[]>) Commons.readFromCSVFile( fc.getSelectedFile() );
+
+                System.out.println( "File has " + serversList.size() + " records" );
+
+                loadData( serversList );
+
+                // for ( String[] s : serversList )
+                // {
+                // System.err.println( "Name: " + s[0] + ", Ports: " + s[1] );
+                //
+                // }
+
+            }
+
+        }
+        else if ( e.getSource() == startTest )
+        {
+            startTest.setEnabled( false );
+            progressBar.setIndeterminate( true );
+            progressBar.setStringPainted( true );
+            // Instances of javax.swing.SwingWorker are not reusuable, so
+            // we create new instances as needed.
+            task = new Task();
+            task.addPropertyChangeListener( this );
+            task.execute();
+
+        }
+    }
+
+    public void setState( Boolean isOK )
+    {
+        loadFile.setEnabled( isOK );
+        startTest.setEnabled( isOK );
+        // icon.setEnabled( isOK );
+        if ( isOK )
+        {
+            icon.setIcon( Commons.createImageIcon( Strings.ICON_UNLOCKED ) );
+            setBackground( Color.WHITE );
+        }
+    }
+
+    class Task
+        extends SwingWorker<Void, Void>
+    {
+        @Override
+        public Void doInBackground()
+        {
+            // loadData( "" );
+
+            int totalJobs = 0;
+            int progress = 0;
+
+            totalJobs = servers.size();
+
+            System.err.println( "Total jobs: " + totalJobs );
+
+            setProgress( 0 );
+
+            ExecutorService executor =
+                new ThreadPoolExecutor( maxThreads, maxThreads, 1, TimeUnit.MINUTES,
+                                        new ArrayBlockingQueue<Runnable>( maxThreads, true ),
+                                        new ThreadPoolExecutor.CallerRunsPolicy() );
+
+            for ( final Server s : servers )
+            {
+                System.err.println( s.getHost() );
+
+                executor.submit( new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        ping( s.getHost(), s.getPort() );
+                    }
+                } );
+
+                progress = Math.round( ( (float) results.size() / (float) totalJobs ) * 100 );
+
+                setProgress( Math.min( progress, 100 ) );
+
+                System.err.println( "results.size: " + results.size() );
+                System.err.println( "prog.size: " + ( (float) results.size() / (float) totalJobs ) );
+            }
+
+            executor.shutdown();
+
+            progress = Math.round( ( (float) results.size() / (float) totalJobs ) * 100 );
+
+            setProgress( Math.min( progress, 100 ) );
+
+            try
+            {
+                if ( !executor.awaitTermination( 60, TimeUnit.SECONDS ) )
+                {
+                    System.err.println( "1st Try..." );
+                    executor.shutdownNow();
+                    setProgress( 50 );
+                }
+            }
+            catch ( InterruptedException ex )
+            {
+                System.err.println( "Final Try..." );
+                executor.shutdownNow();
+                Thread.currentThread().interrupt();
+            }
+            setProgress( 100 );
+            System.err.println( "Process completed... Results below. Total tests: " + results.size() );
+
+            for ( ConTest s : results )
+            {
+                System.out.format( "\n%10s%32d%32s%16s", s.getHost(), s.getPort(), s.getStatusBoolean(),
+                                   s.getErrorString() );
+            }
+
+            return null;
+        }
+
+        @Override
+        public void done()
+        {
+            System.out.println( "Done..." );
+            Toolkit.getDefaultToolkit().beep();
+            startTest.setEnabled( true );
+        }
+    }
+
+    public static void loadData( ArrayList<String[]> serversList )
+    {
+        servers = new ArrayList<Server>();
+        results = new ArrayList<ConTest>();
+
+        Server s;// = new Server();
+        // s.setHost( "www.google.com" );
+        // s.setPorts( new ArrayList<Number>( Arrays.asList( 23, 24 ) ) );
+
+        for ( String[] serverDetail : serversList )
+        {
+
+            String[] host = {}, port = {};
+
+            int commaIndex = serverDetail[0].indexOf( GeneralProps.FWD_SLASH );
+
+            if ( serverDetail[0].indexOf( GeneralProps.FWD_SLASH ) >= 0 )
+            {
+                host = serverDetail[0].split( GeneralProps.FWD_SLASH );
+            }
+            else
+            {
+                host = new String[1];
+                host[0] = serverDetail[0];
+            }
+
+            if ( serverDetail[1].indexOf( GeneralProps.COMMA ) >= 0 )
+            {
+                port = serverDetail[1].split( GeneralProps.COMMA );
+            }
+            else
+            {
+                port = new String[1];
+                port[0] = serverDetail[1];
+            }
+
+            for ( String h : host )
+            {
+                for ( String p : port )
+                {
+                    try
+                    {
+                        System.err.format( "HOST: %10s, PORT: %10s\n", h, p );
+                        s = new Server();
+                        s.setHost( h );
+                        s.setPort( Integer.parseInt( p ) );
+                        servers.add( s );
+                    }
+                    catch ( Exception e )
+                    {
+                        System.err.format( "Bad server details: %16s %16s\n", h, p );
+                    }
+
+                }
+            }
+
+        }
+
+        System.err.println( "Ready to start tests on " + servers.size() + " connections" );
+
+        for ( Server si : servers )
+        {
+            System.err.format( "Host is:\t%s\tPort is:\t%d\n", si.getHost(), si.getPort() );
+
+        }
+
+    }
+
+    public static void startTest()
+    {
+        if ( servers == null )
+        {
+            System.err.println( "Servers not loaded yet" );
+            return;
+        }
+
+        int maxThreads = 4;
+
+        ExecutorService executor =
+            new ThreadPoolExecutor( maxThreads, maxThreads, 1, TimeUnit.MINUTES,
+                                    new ArrayBlockingQueue<Runnable>( maxThreads, true ),
+                                    new ThreadPoolExecutor.CallerRunsPolicy() );
+
+        // for ( final Server s : servers )
+        // {
+        // System.out.println( s.getHost() );
+        //
+        // executor.submit( new Runnable()
+        // {
+        // @Override
+        // public void run()
+        // {
+        // ping( h, prt );
+        // }
+        // } );
+        //
+        // }
+
+        executor.shutdown();
+
+        try
+        {
+            if ( !executor.awaitTermination( 60, TimeUnit.SECONDS ) )
+            {
+                System.err.println( "1st Try..." );
+                executor.shutdownNow();
+            }
+
+        }
+        catch ( InterruptedException ex )
+        {
+            System.err.println( "Final Try..." );
+            executor.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+
+        System.err.println( "Process completed... Results below. Total tests: " + results.size() + "\n" );
+
+        for ( ConTest s : results )
+        {
+
+            System.out.format( "\n%10s%32d%32s%16s", s.getHost(), s.getPort(), s.getStatusBoolean(), s.getErrorString() );
+        }
+
+    }
+
+    public void updateTableData()
+    {
+        if ( model.getRowCount() > 1 )
+        {
+            for ( int i = 0; i < model.getRowCount(); i++ )
+                model.removeRow( i );
+        }
+
+        for ( Server s : servers )
+        {
+            model.addRow( new String[] { s.getHost(), Integer.toString( s.getPort() ), "TRUE", s.getErrorString() } );
+
+        }
+        // model.addRow( new )
+
+    }
+
+    public static void ping( String host, int port )
+    {
+        InetAddress ip;
+        Socket Skt;
+
+        ConTest s = new ConTest();
+
+        try
+        {
+            ip = InetAddress.getByName( host );
+
+            s.setHost( host );
+            s.setIpString( ip.getHostAddress() );
+            s.setPort( port );
+
+            // System.out.println( "IP address is " + ip.getHostAddress() );
+            System.out.format( "Connecting %10s %10d\n", host, port );
+            Skt = new Socket( host, port );
+
+            s.setStatusBoolean( true );
+
+            // System.out.println( "There is a server on port " + port + " of " + host );
+        }
+        catch ( UnknownHostException e )
+        {
+            // System.out.println( "Exception occured" + e );
+            s.setStatusBoolean( false );
+            s.setErrorString( e.getMessage() );
+            // break;
+        }
+        catch ( IOException e )
+        {
+            // System.out.println( "Exception occured" + e );
+            s.setStatusBoolean( false );
+            s.setErrorString( e.getMessage() );
+        }
+        catch ( Exception e )
+        {
+            // System.out.println( "Other Exception" + e );
+            s.setStatusBoolean( false );
+            s.setErrorString( e.getMessage() );
+        }
+
+        results.add( s );
+
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
+     */
+    @Override
+    public void propertyChange( PropertyChangeEvent evt )
+    {
+        if ( "progress" == evt.getPropertyName() )
+        {
+            int progress = (Integer) evt.getNewValue();
+            progressBar.setIndeterminate( false );
+            progressBar.setValue( progress );
+
+            updateTableData();
+        }
+    }
+
+}

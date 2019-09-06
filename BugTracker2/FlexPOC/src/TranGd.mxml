@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    creationComplete="initdata(event)"
+    implements="flash.events.IEventDispatcher"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Script>
+<![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.events.FlexEvent;
+
+            [Bindable]
+            private var array:ArrayCollection = new ArrayCollection([
+                                                                    { Col1: "a", Col2: "1", Col3: "X" },
+                                                                    { Col1: "b", Col2: "2", Col3: "Y" },
+                                                                    { Col1: "c", Col2: "3", Col3: "Z" },
+                                                                    { Col1: "d", Col2: "4", Col3: "W" },
+                                                                    ]);
+
+
+            [Bindable]
+            private var listMetaData:ArrayCollection = new ArrayCollection([
+                                                                           { AttrName: "CRDS ID", Core: "true", Other: "NS" },
+                                                                           { AttrName: "Legal Name", Core: "true", Other: "NS" },
+                                                                           { AttrName: "Address", Core: "true", Other: "NS" },
+                                                                           { AttrName: "SSCI", Core: "false", Other: "NS" },
+                                                                           ]);
+			
+			public var func:Function=new Function();
+			public var ed:EventDispatcher;
+
+            protected function initdata(event:FlexEvent):void
+            {
+ 
+				ed.addEventListener(
+				attributes.dataProvider = listMetaData;
+
+            }
+        ]]></fx:Script>
+    <s:HGroup 
+        x="225" y="49">
+        <!--the VGroup below it's a kind of a 'vertical header'. If you, like use it.-->
+        <s:VGroup id="vHeader"
+            width="50">
+            <s:List id="attributes"
+                width="100"
+                borderAlpha="0"
+                itemRenderer="ListItemRenderer"/>
+        </s:VGroup>
+        <!--        <s:VGroup id="vHeader"
+                    width="50">
+                    <s:Label
+                        fontWeight="bold"
+                        text="Col 1"/>
+                    <s:Label text="Col 2"/>
+                    <s:Label text="Col 3"/>
+                </s:VGroup>
+        -->
+        <!--the DataGroup with Horizontal layout and a itemRenderer using a VGroup-->
+        <s:DataGroup id="dataGroup"
+            width="100%"
+            dataProvider="{array}"
+            clipAndEnableScrolling="true">
+            <s:layout>
+                <s:HorizontalLayout gap="5"
+                    useVirtualLayout="true"/>
+            </s:layout>
+            <s:itemRenderer>
+                <fx:Component>
+                    <s:ItemRenderer width="49">
+                        <fx:Script>
+                            <![CDATA[
+                                
+                            ]]>
+                        </fx:Script>
+                        <s:VGroup>
+                            <s:Label 
+                                fontWeight="bold"
+                                text="{data.Col1}"/>
+                            <s:Label text="{data.Col2}"/>
+                            <s:Label text="{data.Col3}"/>
+                        </s:VGroup>
+                    </s:ItemRenderer>
+                </fx:Component>
+            </s:itemRenderer>
+        </s:DataGroup>
+    </s:HGroup>
+    <!--the HSCrollBar positioned above the dataGroup-->
+    <s:HScrollBar 
+        x="276" y="27" width="100"
+        pageSize="50" stepSize="50"
+        viewport="{dataGroup}"/>
+</s:Application>

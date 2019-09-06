@@ -1,0 +1,86 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace Reusable "org.issuetracker.components.Reusable.*";
+@namespace view "org.abhinav.bugtracker.components.view.*";
+@namespace view1 "org.abhinav.bugtracker.view.*";
+
+.applicationLabel
+{
+	 fontSize: 36;
+	 fontWeight: bold;
+	 color: #303030;
+}
+.applicationDesc
+{
+	 fontSize: 20;
+	 fontWeight: bold;
+	 color: #CCCCCC;
+}
+.lblHeaderStyle
+{
+	 fontSize: 16;
+	 fontWeight:bold;
+	 color: #CCCCCC;
+}
+.lblFooterStyle
+{
+	 fontSize: 10;
+	 fontWeight:bold;
+	 color: #CCCCCC;
+	 
+}
+
+view1|LoginPageView mx|LinkButton
+{
+	color: #0000FF;
+	fontWeight: bold;
+	fontSize: 16;
+	textDecoration: underline;
+	textRollOverColor: #0000FF;
+	rollOverColor: #FFFFFF;
+	
+}
+
+s|Form
+{
+	percentWidth:80;
+}
+
+s|FormItem
+{
+	percentWidth:80;
+	color: #404040;
+}
+
+s|Button
+{
+	cornerRadius:10;
+}
+
+view1|IssuePortalView s|FormItem
+{
+	skinClass:ClassReference("spark.skins.spark.StackedFormItemSkin");
+}
+	
+view1|IssuePortalView s|FormHeading
+{
+	skinClass: ClassReference("spark.skins.spark.StackedFormHeadingSkin")
+}
+
+s|TextInput
+{
+	skinClass:ClassReference("org.abhinav.bugtracker.components.skins.TextInputCustomSkin");
+	width: 200;
+}
+
+Reusable|Captcha
+{
+	backgroundColor: #FFFFFF;
+}
+
+/*s|ComboBox
+{
+	skinClass: ClassReference("org.issuetracker.components.skins.RoundedComboSkin");
+}*/
+

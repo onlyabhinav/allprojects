@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+    xmlns:s="library://ns.adobe.com/flex/spark" initialize="init(event)"
+    xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+    </fx:Declarations>
+    <fx:Style>
+		@namespace s "library://ns.adobe.com/flex/spark";
+		@namespace mx "library://ns.adobe.com/flex/mx";
+		
+		.boldHeader{
+			font-weight: bold;
+		}
+		.gridItem{
+			font-size:14;
+			header-style-name:boldHeader;
+		}
+	</fx:Style>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+
+            import renderers.ExpandColItemRenderer;
+
+            import mx.controls.Alert;
+            import mx.events.AdvancedDataGridEvent;
+
+            private var lastOpenedItem:Object;
+
+            [Bindable]
+            [Embed("assets/folder_closed.GIF")]
+            private var myFolderClosedIcon:Class;
+
+            [Bindable]
+            [Embed("assets/folder_open.GIF")]
+            private var myFolderOpenIcon:Class;
+
+            private function init(e:Event):void
+            {
+                myADG.setStyle("disclosureOpenIcon", myFolderOpenIcon);
+                myADG.setStyle("disclosureClosedIcon", myFolderClosedIcon);
+                myADG.setStyle("folderOpenIcon", null);
+                myADG.setStyle("folderClosedIcon", null);
+            } 
+
+
+            [Bindable]
+            private var dpHierarchy:ArrayCollection= new ArrayCollection([
+                                                                         {id: 1, source:"SUMMIT", landing: "Done", staging:"In Progress", baseobject:"In Queue", reports:"In Queue",children:[  
+                                                                             {detail:[{amount:5},{amount:10},{amount:20},{amount:45}]}]},
+                                                                         {id: 2, source:"AVOX", landing: "Done", staging:"In Progress", baseobject:"In Queue", reports:"",children:[ 
+                                                                             {detail:[{amount:15},{amount:25},{amount:35},{amount:55}]}]},
+                                                                         {id: 3, source:"SS 1", landing: "In Progress", staging:"In Queue", baseobject:"In Queue", reports:"In Queue",children:[  
+                                                                             {detail:[{amount:26},{amount:32},{amount:73},{amount:123}]}]},
+                                                                         {id: 5, source:"SS 2", landing: "Done", staging:"Done", baseobject:"In Progress", reports:"In Queue",children:[  
+                                                                             {detail:[{amount:159},{amount:235},{amount:135},{amount:155}]}
+                                                                             ]}
+                                                                         ]);                                            
+
+            protected function myADG_itemOpenHandler(event:AdvancedDataGridEvent):void
+            {
+                // TODO Auto-generated method stub
+            /* Alert.show(event.headerPart);
+            event.stopImmediatePropagation();
+            myADG.expandItem(event.item,true); */
+            }
+
+
+            protected function myADG_doubleClickHandler(event:MouseEvent):void
+            {
+
+                if(lastOpenedItem!= null)
+                {
+                    myADG.expandItem(lastOpenedItem,false);
+                }
+
+                if(myADG.isItemOpen(myADG.selectedItem))
+                {
+                    myADG.expandItem(myADG.selectedItem,false);
+                }
+                else{
+                    myADG.expandItem(myADG.selectedItem,true);
+                    lastOpenedItem=myADG.selectedItem;
+                }
+            }
+//folderClosedIcon="{null}" folderOpenIcon="{null}"disclosureClosedIcon="{myFolderClosedIcon}" disclosureOpenIcon="{myFolderOpenIcon}"
+        ]]>
+    </fx:Script>
+
+
+    <mx:AdvancedDataGrid id="myADG" doubleClickEnabled="true" doubleClick="myADG_doubleClickHandler(event)" 
+        displayDisclosureIcon="true"
+        width="100%" height="100%" alternatingItemColors="[]" treeColumn="{treeCol}" selectionColor="0x7FC9FF" rollOverColor="0xFFFFFF"
+        variableRowHeight="true" itemOpen="myADG_itemOpenHandler(event)" rowHeight="60" headerHeight="40" styleName="gridItem"	>
+        <mx:dataProvider>
+            <mx:HierarchicalData source="{dpHierarchy}"/>
+        </mx:dataProvider>
+        <mx:columns>
+            <mx:AdvancedDataGridColumn dataField="source" headerText="Name"/>
+            <mx:AdvancedDataGridColumn dataField="landing" headerText="Landing"/>
+            <mx:AdvancedDataGridColumn dataField="staging" headerText="Staging"/>
+            <mx:AdvancedDataGridColumn dataField="baseobject" headerText="Base Object"/>
+            <mx:AdvancedDataGridColumn dataField="reports" headerText="Reports"/>
+            <mx:AdvancedDataGridColumn id="treeCol" width="50" sortable="false" />
+        </mx:columns>   
+
+        <mx:rendererProviders>         
+            <mx:AdvancedDataGridRendererProvider column="{treeCol}" columnSpan="1" renderer="renderers.ExpandColItemRenderer"
+                depth="1">
+
+            </mx:AdvancedDataGridRendererProvider>
+            <mx:AdvancedDataGridRendererProvider 
+                dataField="detail" 
+                renderer="views.ChartRenderer" 
+                columnIndex="0"
+                columnSpan="0"/>         
+        </mx:rendererProviders>   
+    </mx:AdvancedDataGrid>
+
+</s:Group>

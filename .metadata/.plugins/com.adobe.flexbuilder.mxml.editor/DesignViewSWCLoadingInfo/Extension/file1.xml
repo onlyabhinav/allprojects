@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<ListDetails label="SWC Loading Details" projectName="Extension">
+
+
+<LoadedSetList label="LoadedSet List">
+
+
+<LoadingSet label="LoadingSet1:">
+
+
+<item  label="flexlib.swc-1061906583" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\flexlib.swc-1061906583\library.swf"/>
+
+
+<item  label="spicelib-flex-2.4.0.swc1109279209" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-flex-2.4.0.swc1109279209\library.swf"/>
+
+
+<item  label="parsley-flex4-2.4.1.swc-1155739815" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\parsley-flex4-2.4.1.swc-1155739815\library.swf"/>
+
+
+</LoadingSet>
+
+
+<LoadingSet label="LoadingSet2:">
+
+
+<item  label="flexlib.swc-1061906583" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\flexlib.swc-1061906583\library.swf"/>
+
+
+<item  label="spicelib-flex-2.4.0.swc1109279209" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\spicelib-flex-2.4.0.swc1109279209\library.swf"/>
+
+
+</LoadingSet>
+
+
+</LoadedSetList>
+
+
+<RemovedSetList label="RemovedSet List">
+
+
+<RemovedSet label="RemovedSet1:">
+
+
+<item  label="No Item present in this set"/>
+
+
+</RemovedSet>
+
+
+<RemovedSet label="RemovedSet2:">
+
+
+<item  label="parsley-flex4-2.4.1.swc-1155739815" path="G:\workspace\allprojects\.metadata\.plugins\com.adobe.flexbuilder.codemodel\SwcCache\parsley-flex4-2.4.1.swc-1155739815\library.swf"/>
+
+
+</RemovedSet>
+
+
+</RemovedSetList>
+
+
+</ListDetails>
+
+

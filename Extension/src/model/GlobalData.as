@@ -1,0 +1,37 @@
+package model
+{
+	import mx.collections.ArrayCollection;
+
+	public class GlobalData
+	{
+		public static var detailsData:ArrayCollection = new ArrayCollection([
+			{cid: "1000000493", cname:"BANCO ESPIRITO SANTO SA", caddress: "78 GAMET EL-DOWAL EL-ARABIA STREET",
+				pid: "100007LDN", pname:"BAY HARBOUR MANAGEMENT LC", paddress: "21 LOMBARD STREET"},
+			{cid: "1000000494", cname:"PT BANK ARTHA GRAHA INTERNASIONAL TBK", caddress: "AVENIDA AMILCAR CABRAL",
+				pid: "0652UBSHYCNY", pname:"GML INTERNATIONAL LIMITED", paddress: "ONE NORTH WACKER DRIVE"},
+			{cid: "1000000495", cname:"BANK ISLAM MALAYSIA BERHAD", caddress: "LEIPZIGER STRASSE 4",
+				pid: "0945ITVBENMA", pname:"MILLENNIUM MANAGEMENT LLC", paddress: "51 WEST 52ND STREET"},
+			{cid: "1000000496", cname:"PT BANK LIMAN INTERNATIONAL", caddress: "ABDULLAH AL AHMED STREET",
+				pid: "00958440LDN", pname:"UWE RICHARD SINZINGER", paddress: "133 FLEET STREET"},
+			{cid: "1000000493", cname:"BANCO ESPIRITO SANTO SA", caddress: "78 GAMET EL-DOWAL EL-ARABIA STREET",
+				pid: "100007LDN", pname:"BAY HARBOUR MANAGEMENT LC", paddress: "21 LOMBARD STREET"},
+			{cid: "1000000494", cname:"PT BANK ARTHA GRAHA INTERNASIONAL TBK", caddress: "AVENIDA AMILCAR CABRAL",
+				pid: "0652UBSHYCNY", pname:"GML INTERNATIONAL LIMITED", paddress: "ONE NORTH WACKER DRIVE"},
+			{cid: "1000000495", cname:"BANK ISLAM MALAYSIA BERHAD", caddress: "LEIPZIGER STRASSE 4",
+				pid: "0945ITVBENMA", pname:"MILLENNIUM MANAGEMENT LLC", paddress: "51 WEST 52ND STREET"},
+			{cid: "1000000496", cname:"PT BANK LIMAN INTERNATIONAL", caddress: "ABDULLAH AL AHMED STREET",
+				pid: "00958440LDN", pname:"UWE RICHARD SINZINGER", paddress: "133 FLEET STREET"},
+			{cid: "1000000493", cname:"BANCO ESPIRITO SANTO SA", caddress: "78 GAMET EL-DOWAL EL-ARABIA STREET",
+				pid: "100007LDN", pname:"BAY HARBOUR MANAGEMENT LC", paddress: "21 LOMBARD STREET"},
+			{cid: "1000000494", cname:"PT BANK ARTHA GRAHA INTERNASIONAL TBK", caddress: "AVENIDA AMILCAR CABRAL",
+				pid: "0652UBSHYCNY", pname:"GML INTERNATIONAL LIMITED", paddress: "ONE NORTH WACKER DRIVE"},
+			{cid: "1000000495", cname:"BANK ISLAM MALAYSIA BERHAD", caddress: "LEIPZIGER STRASSE 4",
+				pid: "0945ITVBENMA", pname:"MILLENNIUM MANAGEMENT LLC", paddress: "51 WEST 52ND STREET"},
+			{cid: "1000000496", cname:"PT BANK LIMAN INTERNATIONAL", caddress: "ABDULLAH AL AHMED STREET",
+				pid: "00958440LDN", pname:"UWE RICHARD SINZINGER", paddress: "133 FLEET STREET"}
+		]);   
+		public function GlobalData()
+		{
+		}
+	}
+}

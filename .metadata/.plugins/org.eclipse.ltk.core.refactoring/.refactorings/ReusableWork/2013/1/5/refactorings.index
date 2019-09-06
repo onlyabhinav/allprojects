@@ -1,0 +1,31 @@
+1359262132954	Rename package 'main.gui'
+1359262149776	Rename package 'main.gui.listeners'
+1359262235541	Rename type 'GUIFileDecoder'
+1359262264857	Rename type 'GUIFileEncoder'
+1359262339903	Rename type 'Receiver'
+1359262386118	Rename type 'Publisher'
+1359262715964	Rename type 'ListenerWindow'
+1359265016384	Rename local variable 'field'
+1359265903182	Rename field 'uploadData'
+1359266022486	Rename field 'decoder'
+1359266948371	Copy files
+1359281948057	Copy compilation unit
+1359284813276	Rename type 'PortMonitorWindow'
+1359285503836	Rename field 'encoderWindow'
+1359285513849	Rename field 'decoderWindow'
+1359308002216	Move compilation unit
+1359308064327	Rename type 'ExternalData'
+1359398701908	Rename field 'table'
+1359402908505	Rename field 'exportResult'
+1359402939562	Rename field 'loadFile'
+1359482080211	Rename field 'Green'
+1359482091074	Rename field 'Red'
+1359483903212	Rename field 'LIGHT_GREEN'
+1359483936607	Rename field 'COOL'
+1359519032235	Delete element
+1359519682699	Copy compilation unit
+1359519728853	Copy package
+1359519766775	Copy package
+1359519964055	Copy package
+1359520079262	Copy package
+1359520204353	Copy files

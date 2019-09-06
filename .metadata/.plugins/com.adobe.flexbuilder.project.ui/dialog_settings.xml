@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="false" key="com.adobe.flexbuilder.project.ui.last.flexserver.usedefaults"/>
+	<item value="G:\workspace\allprojects\SampleWebapp\WebContent" key="com.adobe.flexbuilder.project.ui.last.flexserver.location"/>
+	<item value="SampleWebapp/" key="com.adobe.flexbuilder.project.ui.last.flexserver.contextroot"/>
+	<item value="false" key="com.adobe.flexbuilder.project.ui.use.default.location"/>
+	<item value="http://localhost:2310/SampleWebapp/" key="com.adobe.flexbuilder.project.ui.last.flexserver.url"/>
+	<item value="true" key="com.adobe.flexbuilder.project.ui.last.apptype"/>
+	<item value="G:\workspace\allprojects" key="com.adobe.flexbuilder.project.ui.last.project.parent"/>
+	<item value="true" key="com.adobe.flexbuilder.project.ui.last.useremoteobject"/>
+	<item value="false" key="com.adobe.flexbuilder.project.ui.last.java.uselcds"/>
+	<item value="false" key="com.adobe.flexbuilder.project.ui.last.usewtp"/>
+	<item value="" key="com.adobe.flexbuilder.project.ui.last.java.javasrc"/>
+	<item value="3" key="com.adobe.flexbuilder.project.ui.last.server.type"/>
+	<section name="com.adobe.flexbuilder.help.ModulesPropertyPage">
+	</section>
+</section>

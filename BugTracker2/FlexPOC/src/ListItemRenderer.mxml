@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer 
+    currentStateChange="stateChange(event)"
+    mouseOver="itemrenderer1_mouseOverHandler(event)"
+    mouseOut="itemrenderer1_mouseOverHandler(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    autoDrawBackground="true">
+    <fx:Script>
+        <![CDATA[
+            import mx.core.UIComponent;
+            import mx.events.StateChangeEvent;
+
+            public var uic:UIComponent;
+
+            override public function set data(value:Object):void
+            {
+                super.data = value;
+
+            }
+
+            protected function itemrenderer1_mouseOverHandler(event:MouseEvent):void
+            {
+                // TODO Auto-generated method stub
+                this.invalidateDisplayList();
+
+            }
+
+            protected function stateChange(event:StateChangeEvent):void
+            {
+                trace(this.currentState);
+            }
+
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+            {
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+
+                if (data.Core)
+                    this.currentState = "core";
+                else
+                    this.currentState = "noncore";
+
+            }
+        ]]>
+    </fx:Script>
+    <s:states>
+        <s:State name="core"/>
+        <s:State name="noncore"/>
+    </s:states>
+    <s:Label 
+        left="4" right="4" top="4" bottom="4"
+        fontWeight.core="bold"
+        fontWeight.noncore="normal"
+        text="{data.AttrName}"/>
+</s:ItemRenderer>

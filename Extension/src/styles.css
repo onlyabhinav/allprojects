@@ -1,0 +1,27 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+s|Application{
+	background-color: #FFFFFF;
+	
+	horizontal-align: left;
+}
+
+
+.boldType{
+	fontWeight:bold;
+}
+
+.thumbnail{
+	fontWeight:bold;
+	color: blue;
+}
+/*global {
+	color:     #FFBB33;
+	font-size: 12;
+	disabled-color: #FFBB33;
+	disabled-icon-color: #FFBB33;
+}*/
+
+

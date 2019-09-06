@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;AppSettings.java&apos; to &apos;PortWatcher/src/com.neoworks.values&apos;&#x0D;&#x0A;- Original project: &apos;PortWatcher&apos;&#x0D;&#x0A;- Destination element: &apos;PortWatcher/src/com.neoworks.values&apos;&#x0D;&#x0A;- Original element: &apos;AppSettings.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;com.neoworks.values" element1="/src&lt;{AppSettings.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1359519820651" units="1" version="1.0"/>
+</session>

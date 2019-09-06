@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer skinClass="org.abhinav.bugtracker.components.skins.ContainerSkin"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:ns="http://www.spicefactory.org/parsley">
+    <fx:Script>
+        <![CDATA[
+            import org.abhinav.bugtracker.events.ChangeViewEvent;
+            import org.abhinav.bugtracker.model.LoginRequest;
+
+            [MessageDispatcher]
+            [Bindable]
+            public var dispatcher:Function;
+
+            public function btnLoginSubmitClick(event:MouseEvent):void
+            {
+
+                trace('dispatcher...1');
+                dispatcher(new LoginRequest(txtUsername.text, txtPassword.text));
+
+            }
+
+            [MessageHandler]
+            public function loginRequestHandler(obj:LoginRequest):void
+            {
+
+                trace('request...' + obj.username + ' : ' + obj.password);
+                //dispatcher(new LoginRequest('abhinav', '1111'));
+
+            }
+
+            protected function backClickHandler(event:MouseEvent):void
+            {
+                // TODO Auto-generated method stub
+                dispatcher(ChangeViewEvent.changeTo(ChangeViewEvent.APP_HOME_VIEW));
+
+            }
+        ]]>
+    </fx:Script>
+    <fx:Declarations>
+        <ns:Configure/>
+    </fx:Declarations>
+    <!--    <s:layout>
+            <s:VerticalLayout
+                horizontalAlign="center"
+                verticalAlign="middle"/>
+        </s:layout>-->
+    <!--  <s:Label
+          text="Issue Tracker" styleName="applicationLabel"/>-->
+    <s:Form>
+        <s:FormHeading label="Enter Login Details"/>
+        <s:FormItem label="Username:">
+            <s:TextInput id="txtUsername"
+                prompt="Enter Username"/>
+        </s:FormItem>
+        <s:FormItem label="Password:">
+            <s:TextInput id="txtPassword"
+                displayAsPassword="true"
+                prompt="Enter Password"/>
+        </s:FormItem>
+        <s:FormItem>
+            <s:VGroup>
+                <s:CheckBox id="ckbRemember"
+                    label="Remember me" selected="false"/>
+                <s:Button id="btnSubmit"
+                    label="Submit"
+                    click="btnLoginSubmitClick(event)"/>
+            </s:VGroup>
+        </s:FormItem>
+    </s:Form>
+    <mx:LinkButton 
+        label="Back"
+        click="backClickHandler(event)"/>
+</s:SkinnableContainer>

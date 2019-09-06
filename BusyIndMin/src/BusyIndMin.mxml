@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    initialize="application1_initializeHandler(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:busyindicator="net.flashdan.containers.busyindicator.*"
+    viewSourceURL="srcview/index.html">
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.events.FlexEvent;
+
+            import net.flashdan.containers.busyindicator.skins.BusyIndicatorSkin;
+
+            import spark.events.IndexChangeEvent;
+
+            [Bindable]
+            private var sampleData:ArrayCollection = new ArrayCollection([
+                                                                         { name: 'Dan', phone: '612-881-7913' },
+                                                                         { name: 'Debra', phone: '952-543-4542' },
+                                                                         { name: 'Kyle', phone: '456-234-1128' },
+                                                                         { name: 'Rose', phone: '765-127-9734' },
+                                                                         { name: 'Steve', phone: '952-632-6632' },
+                                                                         ]);
+
+            [Bindable]
+            private var animations:ArrayCollection;
+
+            protected function button1_clickHandler(event:MouseEvent):void
+            {
+                busyIndicator.busy = !busyIndicator.busy;
+                if (busyIndicator.busy)
+                {
+                    btn.label = "Hide Busy Indicator";
+                }
+                else
+                {
+                    btn.label = "Show Busy Indicator";
+                }
+            }
+
+
+            protected function application1_initializeHandler(event:FlexEvent):void
+            {
+                var temp:Array = new Array();
+                ;
+                for (var i:int = 1; i < 19; i++)
+                {
+                    temp.push({ label: 'Animation ' + i, source: 'animation' + i });
+                }
+                animations = new ArrayCollection(temp);
+            }
+
+            protected function busyIndicator_initializeHandler(event:FlexEvent):void
+            {
+                busyIndicator.setStyle("source", "assets/animation17.swf");
+                busyIndicator.setStyle("scale", true);
+            }
+        ]]>
+    </fx:Script>
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+    <s:HGroup>
+        <s:Button id="btn"
+            label="Hide Busy Indicator"
+            click="button1_clickHandler(event)"/>
+    </s:HGroup>
+    <!-- busy indicator example wrapped around a data grid -->
+    <s:TitleWindow 
+        width="100%" height="100%"
+        minWidth="100" minHeight="100"
+        title="Busy Indicator Example">
+        <busyindicator:BusyIndicator id="busyIndicator"
+            width="100%" height="100%"
+            initialize="busyIndicator_initializeHandler(event)"
+            busy="true">
+            <mx:DataGrid 
+                width="100%" height="100%"
+                dataProvider="{sampleData}">
+                <mx:columns>
+                    <mx:DataGridColumn headerText="Name"
+                        dataField="name"/>
+                    <mx:DataGridColumn headerText="Phone Number"
+                        dataField="phone"/>
+                </mx:columns>
+            </mx:DataGrid>
+        </busyindicator:BusyIndicator>
+    </s:TitleWindow>
+</s:Application>

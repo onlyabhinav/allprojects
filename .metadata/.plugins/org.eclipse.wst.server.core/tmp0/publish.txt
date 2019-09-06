@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Sun Feb 17 22:55:58 IST 2013
+org.eclipse.jst.jee.server\:SampleWebapp=G\:\\Development\\server\\apache-tomcat-7.0.28\\wtpwebapps\\SampleWebapp
+org.eclipse.jst.jee.server\:BugTrackerService=G\:\\Development\\server\\apache-tomcat-7.0.28\\wtpwebapps\\BugTrackerService

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    minWidth="955" minHeight="600"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:views="views.*"
+    skinClass="skins.CustomAppSkin"
+    preloader="myPreloader.SparkDownloadProgressBarSubClassMin"
+    xmlns:parsley="http://www.spicefactory.org/parsley">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        <parsley:ContextBuilder config="{AppConfig}"/>
+        <parsley:Configure/>
+    </fx:Declarations>
+    <fx:Style source="styles.css"/>
+    <fx:Script>
+        <![CDATA[
+            import events.GlobalEvent;
+            import model.GlobalData;
+
+            import mx.controls.Alert;
+
+            import views.DetailsView;
+
+
+            [MessageHandler]
+            public function openNewTab(event:GlobalEvent):void
+            {
+                //Alert.show(event.data.toString());
+
+                var newTab:DetailsView = new DetailsView();
+                newTab.label = "Details view " + rootTab.numChildren + 1;
+                newTab.gridData = GlobalData.detailsData;
+                rootTab.addChild(newTab);
+
+                rootTab.selectedIndex = rootTab.getChildIndex(newTab);
+
+            }
+        ]]>
+    </fx:Script>
+    <s:controlBarContent>
+        <s:Label 
+            color="0xFFFFFF"
+            fontSize="24"
+            fontWeight="bold"
+            text="CRDS Progress Monitor"/>
+    </s:controlBarContent>
+    <s:VGroup 
+        width="100%" height="100%"
+        gap="0">
+        <!--<s:HGroup gap="0">
+            <s:TabBar dataProvider="{rootTab}" skinClass="skins.CloseableTabSkin" cornerRadius="0"/>
+        </s:HGroup>-->
+        <!--        <s:ButtonBar id="moveNav" right="0">
+                    <s:dataProvider>
+                        <s:ArrayList>
+                            <fx:String>+</fx:String>
+                            <fx:String>-</fx:String>
+                        </s:ArrayList>
+                    </s:dataProvider>
+                </s:ButtonBar>
+        -->
+        <mx:TabNavigator id="rootTab"
+            width="100%" height="100%"
+            paddingBottom="0"
+            paddingTop="0">
+            <mx:Box 
+                width="100%" height="100%"
+                label="Main Dashboard">
+                <views:AdvDashboard/>
+            </mx:Box>
+        </mx:TabNavigator>
+    </s:VGroup>
+</s:Application>

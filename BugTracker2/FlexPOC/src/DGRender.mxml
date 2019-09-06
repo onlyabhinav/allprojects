@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    minWidth="955" minHeight="600" layout="{new VerticalLayout}"
+    initialize="application1_initializeHandler(event)"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        <fx:XML id="itemsXML">
+            <items>
+                <item name="Item 1"
+                    price="1.32"
+                    price2="1.32"/>
+                <item name="Item 2"
+                    price="-12.23"
+                    price2="1.42"/>
+                <item name="Item 3"
+                    price="4.96"
+                    price2="4.96"/>
+                <item name="Item 4"
+                    price="-0.94"
+                    price2="-0.944"/>
+                <item name="Item 1"
+                    price="1.32"
+                    price2="1.32"/>
+                <item name="Item 2"
+                    price="-12.23"
+                    price2="-12.23"/>
+                <item name="Item 3"
+                    price="4.96"
+                    price2="4.96"/>
+                <item name="Item 4"
+                    price="-0.94"
+                    price2="-0.944"/>
+            </items>
+        </fx:XML>
+        <mx:CurrencyFormatter id="currencyFormatter"
+            precision="2"
+            useNegativeSign="false"/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+            import mx.controls.dataGridClasses.DataGridColumn;
+            import mx.events.FlexEvent;
+            import mx.utils.ObjectUtil;
+            import org.spicefactory.lib.reflect.metadata.Types;
+            import spark.layouts.VerticalLayout;
+
+            public var gridData:ArrayCollection;
+
+            protected function application1_initializeHandler(event:FlexEvent):void
+            {
+
+                gridData = new ArrayCollection();
+                gridData.addItem({ name: "Abhinav", age: 23, city: "Agr" });
+                gridData.addItem({ name: "Himanshu", age: 22, city: "Ald" });
+                gridData.addItem({ name: "Akash", age: 25, city: "Knp" });
+                gridData.addItem({ name: "Ritika", age: 23, city: "Frz" });
+                gridData.addItem({ name: "Mittal", age: 22, city: "Jpr" });
+                gridData.addItem({ name: "Nishi", age: 21, city: "Dddn" });
+                gridData.addItem({ name: "Parul", age: 9, city: "Dli" });
+                gridData.addItem({ name: "Eva", age: 23, city: "Blr" });
+
+                dataGrid.dataProvider = gridData;
+
+
+            }
+
+            protected function button1_clickHandler(event:MouseEvent):void
+            {
+                // TODO Auto-generated method stub
+                dataGrid.columns;
+
+                trace(dataGrid.columns);
+
+                for each (var item:DataGridColumn in dataGrid.columns)
+                {
+                    trace(item.headerText);
+
+
+                    if (item.headerText == "name")
+                    {
+                        trace(true);
+
+                        item.setStyle('color', 0x00AA00);
+                        item.setStyle('fontWeight', 'bold');
+
+                    }
+
+                }
+
+            }
+
+            protected function button2_clickHandler(event:MouseEvent):void
+            {
+                var tdata:ArrayCollection = new ArrayCollection;
+
+
+                var cols:Array = new Array();
+
+                var dgc2:DataGridColumn = new DataGridColumn('attrib');
+                dgc2.headerText = "";
+                cols.push(dgc2);
+
+
+                for each (var item:Object in gridData)
+                {
+                    var dgc:DataGridColumn = new DataGridColumn();
+
+                    dgc.headerText = item.name;
+
+                    dgc.dataField = item.name;
+
+                    cols.push(dgc);
+                    dataGrid2.columns = cols; //.push(dgc);
+
+                }
+
+                for (var i:int = 0; i <= 2; i++)
+                {
+                    var o:Object = {};
+                    o["attrib"] = "age";
+                    for each (var itm:Object in gridData)
+                    {
+                        o[itm.name] = item.age;
+
+                    }
+
+                }
+
+
+
+
+
+            }
+
+            private function price_labelFunc(item:Object, column:DataGridColumn):String
+            {
+
+                return currencyFormatter.format(item.@price);
+            }
+
+            private function price_sortCompareFunc(itemA:Object, itemB:Object):int
+            {
+                return ObjectUtil.numericCompare(itemA.@price, itemB.@price);
+            }
+        ]]>
+    </fx:Script>
+    <fx:Style>
+			@namespace s "library://ns.adobe.com/flex/spark";
+			@namespace mx "library://ns.adobe.com/flex/mx";
+			
+			.centered {
+			text-align: center;
+			}
+		</fx:Style>
+    <s:Button 
+        label="doSpmething"
+        click="button1_clickHandler(event)"/>
+    <s:Button 
+        label="transpose"
+        click="button2_clickHandler(event)"/>
+    <mx:DataGrid id="dataGrid">
+        <mx:columns>
+            <mx:DataGridColumn 
+                headerStyleName="centered"
+                dataField="name"/>
+            <mx:DataGridColumn 
+                headerStyleName="centered"
+                dataField="age"/>
+            <mx:DataGridColumn 
+                headerStyleName="centered"
+                dataField="city"/>
+        </mx:columns>
+    </mx:DataGrid>
+    <mx:DataGrid id="dataGrid2"/>
+    <!--    <mx:DataGrid id="dataGrid"
+            dataProvider="{itemsXML.item}">
+            <mx:columns>
+                <mx:DataGridColumn
+                    headerStyleName="centered"
+                    dataField="@name"
+                    headerText="Name:"/>
+                <mx:DataGridColumn
+                    headerStyleName="centered"
+                    textAlign="right"
+                    dataField="@price"
+                    headerText="Price:"
+                    sortCompareFunction="price_sortCompareFunc"/>
+                <mx:DataGridColumn
+                    headerStyleName="centered"
+                    textAlign="right"
+                    dataField="@price2"
+                    headerText="Price:"
+                    sortCompareFunction="price_sortCompareFunc"
+                    itemRenderer="PriceLabel2"/>
+            </mx:columns>
+        </mx:DataGrid>-->
+</s:Application>

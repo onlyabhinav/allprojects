@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MXDataGridItemRenderer 
+    focusEnabled="true"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Script>
+        <![CDATA[
+            private const NEGATIVE_COLOR:uint = 0xFF0000; // Red
+
+
+            private const POSITIVE_COLOR:uint = 0x000000; // Black
+
+            [Bindable]
+            private var _selected:Boolean = false;
+
+            override public function set data(value:Object):void
+            {
+                super.data = value;
+
+                _selected = value.selected as Boolean;
+
+            }
+
+
+
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+            {
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+
+
+                /* Set the font color based on the item price. */
+                if (data.Core == 'true')
+                    lblData.setStyle("color", POSITIVE_COLOR);
+                else
+                    lblData.setStyle("color", NEGATIVE_COLOR);
+                //    lblData.setStyle("color", (parseFloat(data.@price) <= 0) ? NEGATIVE_COLOR : POSITIVE_COLOR);
+
+            }
+        ]]>
+    </fx:Script>
+    <s:HGroup 
+        width="100%" height="100%"
+        horizontalAlign="center"
+        paddingLeft="5"
+        paddingRight="5"
+        verticalAlign="middle"
+        gap="2">
+        <s:Label id="lblData"
+            left="0" right="0" top="0" bottom="0"
+            text="{dataGridListData.label}"/>
+        <mx:Spacer width="100%"/>
+        <s:CheckBox id="ckbSelected"
+            selected="@{_selected}"/>
+    </s:HGroup>
+</s:MXDataGridItemRenderer>

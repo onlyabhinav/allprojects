@@ -1,0 +1,26 @@
+package demo.mvc.flickr.controller
+{
+    import demo.mvc.flickr.model.FlickrProxy;
+
+    import org.puremvc.as3.interfaces.ICommand;
+    import org.puremvc.as3.interfaces.INotification;
+    import org.puremvc.as3.patterns.command.SimpleCommand;
+
+    public class StartupCommand extends SimpleCommand implements ICommand
+    {
+        override public function execute(notification:INotification):void
+        {
+            var proxy:FlickrProxy = new FlickrProxy();
+
+            facade.registerProxy(proxy);
+
+            var app:FlickrAirApp = notification.getBody() as FlickrAirApp;
+
+            facade.registerMediator(new BooksPanelMediator(app.booksPanel));
+            facade.registerMediator(new BookFormMediator(app.bookForm));
+
+            //sendNotification(ApplicationFacade.GET_BOOKS);
+            proxy.getBooks();
+        }
+    }
+}

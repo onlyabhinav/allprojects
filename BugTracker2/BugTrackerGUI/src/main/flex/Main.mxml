@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application 
+    width="100%" height="100%"
+    creationComplete="appCreationComplete(event)"
+    pageTitle="Project: Issue Tracker (Flex 4, Java, MySQL)"
+    skinClass="org.abhinav.bugtracker.components.skins.AppSkin"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+    xmlns:view="org.abhinav.bugtracker.view.*"
+    xmlns:parsley="http://www.spicefactory.org/parsley"
+    xmlns:Reusable="org.abhinav.bugtracker.components.Reusable.*">
+    <fx:Script>
+        <![CDATA[
+            import mx.controls.Alert;
+            import mx.events.FlexEvent;
+            import mx.managers.PopUpManager;
+            import mx.rpc.AsyncToken;
+            import mx.rpc.events.FaultEvent;
+            import mx.rpc.events.ResultEvent;
+            import mx.rpc.remoting.mxml.RemoteObject;
+
+            import org.abhinav.bugtracker.events.ChangeViewEvent;
+            import org.abhinav.bugtracker.events.CreatePopupEvent;
+            import org.abhinav.bugtracker.events.NewIssueEvent;
+            import org.abhinav.bugtracker.events.NewUserEvent;
+            import org.abhinav.bugtracker.model.LoginRequest;
+            import org.abhinav.bugtracker.model.ResultVO;
+            import org.abhinav.bugtracker.view.PopupMenu;
+            import org.abhinav.bugtracker.constants.AppConstants;
+            import org.spicefactory.parsley.core.context.Context;
+
+            [Inject]
+            public var ro:RemoteObject;
+
+            [Inject]
+            public var shell:Context;
+
+            protected function handleResult(event:ResultEvent):void
+            {
+                trace('Server Response');
+                var result:ResultVO = event.result as ResultVO;
+
+
+
+                Alert.show("Server responded: " + result.message);
+            }
+
+            [MessageHandler]
+            public function loginRequestHandler(loginRequest:LoginRequest):void
+            {
+                trace('Getting data...');
+                //ro.getStatus();
+                var token:AsyncToken = ro.login(loginRequest.username, loginRequest.password);
+
+
+            }
+
+            [MessageHandler]
+            public function registerUserHandler(event:NewUserEvent):void
+            {
+                trace('Registering data...');
+                ro.register(event.user);
+            }
+
+            [MessageHandler]
+            public function changeViewHandler(event:ChangeViewEvent):void
+            {
+                trace('Update View');
+
+                //   currentState = "login";
+
+                if (event.type == ChangeViewEvent.UPDATE_VIEW)
+                {
+                    if (event.currentView == ChangeViewEvent.LOGIN_VIEW)
+                        mainVS.selectedIndex = mainVS.getChildIndex(loginView);
+                    else if (event.currentView == ChangeViewEvent.NEW_USER_VIEW)
+                        mainVS.selectedIndex = mainVS.getChildIndex(registerView);
+                    else if (event.currentView == ChangeViewEvent.APP_HOME_VIEW)
+                        mainVS.selectedIndex = mainVS.getChildIndex(mainView);
+                    else if (event.currentView == ChangeViewEvent.SEARCH_VIEW)
+                        mainVS.selectedIndex = mainVS.getChildIndex(portalView);
+
+                }
+
+            }
+
+            protected function appCreationComplete(event:FlexEvent):void
+            {
+                // header.headerRibbon.dataProvider = mainVS;
+                footer.menu.menuItems = mainVS;
+            }
+
+            [MessageHandler]
+            public function createPopupMenu(evt:CreatePopupEvent):void
+            {
+                var ttlWndw:PopupMenu = PopUpManager.createPopUp(this, PopupMenu,
+                                                                 true) as PopupMenu;
+                PopUpManager.centerPopUp(ttlWndw);
+
+            }
+
+            [MessageHandler]
+            public function newIssueCommand(event:NewIssueEvent):void
+            {
+                trace('New Issue... passing to service');
+                ro.newIssue(event.issue);
+            }
+
+            public function faultHandler(event:FaultEvent):void
+            {
+                trace('Server Fault Response');
+                Alert.show(event.toString());
+            }
+
+            protected function setupApplication(event:Event):void
+            {
+                // TODO Auto-generated method stub
+                //  ro.addEventListener(ResultEvent.RESULT, handleResult);
+                //  ro.addEventListener(FaultEvent.FAULT, faultHandler);
+
+
+            }
+        ]]>
+    </fx:Script>
+    <fx:Style source="assets/styles.css"/>
+    <fx:Declarations>
+        <parsley:Configure activate="setupApplication(event)"/>
+        <parsley:ContextBuilder config="{AppConfig}"/>
+        <s:Transition fromState="normal"
+            toState="login"
+            autoReverse="true">
+            <s:Fade target="{mainVS}"
+                duration="3000"/>
+        </s:Transition>
+        <!--<s:RemoteObject id="ro"
+        destination="controller"
+        result="handleResult(event)"/>-->
+    </fx:Declarations>
+    <s:layout>
+        <s:VerticalLayout 
+            horizontalAlign="center"
+            verticalAlign="middle"
+            gap="0"/>
+    </s:layout>
+    <view:HeaderView id="header"/>
+    <mx:ViewStack id="mainVS"
+        width="100%" height="100%"
+        selectedIndex="0">
+        <s:NavigatorContent id="mainView"
+            label="Home">
+            <view:MainView 
+                width="100%" height="100%"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent id="loginView"
+            label="Login">
+            <view:LoginPageView 
+                width="100%" height="100%"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent id="registerView"
+            label="New User">
+            <view:NewUserRegView 
+                width="100%" height="100%"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent id="portalView"
+            label="Portal">
+            <view:IssuePortalView 
+                width="100%" height="100%"/>
+        </s:NavigatorContent>
+        <s:NavigatorContent id="newIssue"
+            label="New Issue">
+            <view:NewIssueView 
+                width="100%" height="100%"/>
+        </s:NavigatorContent>
+    </mx:ViewStack>
+    <view:FooterView id="footer"/>
+</s:Application>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+    width="100%" height="100%"
+    xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+    <fx:Declarations>
+        <!-- Place non-visual elements (e.g., services, value objects) here -->
+        <!--    <s:ItemRenderer name="ManagerItemRenderer"
+                autoDrawBackground="true">
+                <s:Label id="labelDisplay"
+                    left="4" right="4" top="4" bottom="4"
+                    color="red"
+                    fontWeight="bold"/>
+            </s:ItemRenderer>
+            <s:ItemRenderer name="EmployeeItemRenderer"
+                autoDrawBackground="true">
+                <s:Label id="labelDisplay"
+                    left="4" right="4" top="4" bottom="4"/>
+            </s:ItemRenderer>-->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import mx.collections.ArrayCollection;
+
+            [Bindable]
+            public var gridData:ArrayCollection;
+        ]]>
+    </fx:Script>
+    <s:Label text="Showing details"/>
+    <mx:DataGrid id="gridDetails"
+        width="100%" height="100%"
+        dataProvider="{gridData}">
+        <mx:columns>
+            <mx:DataGridColumn headerText="CRDS ID"
+                dataField="cid"/>
+            <mx:DataGridColumn headerText="CRDS Name"
+                dataField="cname"/>
+            <mx:DataGridColumn headerText="CRDS Address"
+                dataField="caddress"/>
+            <mx:DataGridColumn headerText="Partner ID"
+                dataField="pid"/>
+            <mx:DataGridColumn headerText="Partner Name"
+                dataField="pname"/>
+            <mx:DataGridColumn headerText="Partner Address"
+                dataField="paddress"/>
+        </mx:columns>
+    </mx:DataGrid>
+</mx:VBox>
